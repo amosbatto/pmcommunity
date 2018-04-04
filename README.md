@@ -9,8 +9,8 @@ versions of ProcessMaker, but I haven't tested it.
 
 All code is Public Domain and can be used without any restrictions.
 
-Author: Amos Batto
-Email: amos@processmaker.com
+Author: Amos Batto  
+Email: amos@processmaker.com  
 ProcessMaker Forum Manager since 2009
 
 ## Contents
