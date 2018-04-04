@@ -1,7 +1,8 @@
 # pmcommunity
 Code for the ProcessMaker community
 
-I have created this code to help users of ProcessMaker. 
+I have created this code to help users of ProcessMaker when answering questions
+at http://forum.processmaker.com
 
 Most of this code was created in version 3.2 or 3.2.1. It may work in previous
 versions of ProcessMaker, but I haven't tested it.
