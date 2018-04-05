@@ -1,4 +1,4 @@
-# Extra REST Endpoints Plugin (`extraRest-1.*X*.tar`)
+# Extra REST Endpoints Plugin (`extraRest-1.X.tar`)
 
 The extraRest plugin includes extra REST endpoints to be used in ProcessMaker.
 Some of these endpoints get around security restrictions in ProcessMaker's official
@@ -23,9 +23,22 @@ For more information, untar the plugin and examine the source code in
 **extraRest/src/Services/Api/ExtraRest/extra.php**. 
 
 ## Included REST endpoints:
+* [Claim case: `POST extrarest/case/{app_uid}/claim`](#claim-case-post-extrarestcaseapp_uidclaim)
+* [Set case status: `PUT extrarest/case/status/{app_uid}`](#set-case-status-put-extrarestcasestatusapp_uid)
+* [Get case info: `GET extrarest/case/{app_uid}`](#get-case-info-get-extrarestcaseapp_uid)
+* [Get case and task info: `GET extrarest/case/{app_uid}/{del_index}`](#get-case-and-task-info-get-extrarestcaseapp_uiddel_index)
+* [Get supervisor's list of review cases: `GET extrarest/cases/review`](#get-supervisors-list-of-review-cases-get-extrarestcasesreview)
+* [Get logged-in user info: `GET extrarest/login-user`](#get-logged-in-user-info-get-extrarestlogin-user)
+* [Get system language: `GET extrarest/language`](#get-system-language-get-extrarestlanguage)
+* [Set system language: `PUT extrarest/language/{lang}`](#set-system-language-put-extrarestlanguagelang)
+* [Get login session ID: `GET extrarest/session-id`](#get-login-session-id-get-extrarestsession-id)
+* [Execute database query: `POST extrarest/sql`](#execute-database-query-post-extrarestsql)
+* [Get user's default menu: `GET extrarest/user/{usr_uid}/config`](#get-users-default-menu-get-extrarestuserusr_uidconfig)
+* [Set user's default menu: `PUT extrarest/user/{usr_uid}/config`](#set-users-default-menu-put-extrarestuserusr_uidconfig)
+* [Get user's case list: `GET extrarest/cases/user/{user_uid}?{param=option}`](#get-users-case-list-get-extrarestcasesuseruser_uidparamoption)
 
---------------------
-### Claim case `POST extrarest/case/{app_uid}/claim`
+-------------------
+### Claim case: `POST extrarest/case/{app_uid}/claim`
 
 Claim a case for a user where a task is unassigned because the task 
 is Self Service or Self Service Value Based Assignment. 
@@ -77,7 +90,7 @@ $oRet = pmRestRequest("POST", $url, $aVars, $oToken->access_token);
 ```
 
 --------------------
-### Set case status `PUT extrarest/case/status/{app_uid}`
+### Set case status: `PUT extrarest/case/status/{app_uid}`
 
 Change the case's status from TO_DO to DRAFT or from DRAFT to TO_DO. 
 The logged-in user must either be the assigned user to the specified 
@@ -107,7 +120,7 @@ $oRet = pmRestRequest("PUT", $url, $aVars, $oToken->access_token);
 ```
 
 --------------------
-### Get case info `GET extrarest/case/{app_uid}`
+### Get case info: `GET extrarest/case/{app_uid}`
 
 Get case information (without its task). Unlike the official endpoint 
 GET cases/{app_uid}, this endpoint doesn't check whether the logged-in user had 
@@ -130,55 +143,56 @@ object with information about the case.
 *Response:*  
 ```javascript
 {
-    "APP_UID":"72415796659f95bf89a59e2011357239",
-    "APP_TITLE":"#79",
-    "APP_DESCRIPTION":"",
-    "APP_NUMBER":79,
-    "APP_PARENT":"",
-    "APP_STATUS":"TO_DO",
-    "APP_STATUS_ID":2,
-    "PRO_UID":"73387376659f92ecf7a9382090189764",
-    "APP_PROC_STATUS":"",
-    "APP_PROC_CODE":"",
-    "APP_PARALLEL":"N",
-    "APP_INIT_USER":"00000000000000000000000000000001",
-    "APP_CUR_USER":"00000000000000000000000000000001",
-    "APP_CREATE_DATE":"2017-11-01 01:30:32",
-    "APP_INIT_DATE":"2017-11-01 01:30:32",
-    "APP_FINISH_DATE":null,
-    "APP_UPDATE_DATE":"2017-11-03 19:42:06",
-    "APP_DATA":{
-        "SYS_LANG":"en",
-        "SYS_SKIN":"big",
-        "SYS_SYS":"workflow",
-        "APPLICATION":"72415796659f95bf89a59e2011357239",
-        "PROCESS":"73387376659f92ecf7a9382090189764",
-        "TASK":"32685606259f92ed00fc0d0080958682",
-        "INDEX":"2",
-        "USER_LOGGED":"00000000000000000000000000000001",
-        "USR_USERNAME":"admin",
-        "selectedImagesUrls":"http:\/\/localhost:321\/sysworkflow\/en\/big\/73387376659f92ecf7a9382090189764\/discourse7747.png,http:\/\/localhost:321\/sysworkflow\/en\/big\/73387376659f92ecf7a9382090189764\/ValueBasedAssignmentTask7.png,http:\/\/localhost:321\/sysworkflow\/en\/big\/73387376659f92ecf7a9382090189764\/InstallPhpMyAdminPasswordConfirm.png",
-        "APP_NUMBER":"79",
-        "PIN":"Z7OX",
-        "__VAR_CHANGED__":"PROCESS,PROCESS,SYS_SYS,SYS_LANG,SYS_SKIN,htmlTable,htmlTable,htmlTable",
-        "typeCurrentTask":"1"
+    "APP_UID":             "72415796659f95bf89a59e2011357239",
+    "APP_TITLE":           "#79",
+    "APP_DESCRIPTION":     "",
+    "APP_NUMBER":          79,
+    "APP_PARENT":          "",
+    "APP_STATUS":          "TO_DO",
+    "APP_STATUS_ID":       2,
+    "PRO_UID":             "73387376659f92ecf7a9382090189764",
+    "APP_PROC_STATUS":     "",
+    "APP_PROC_CODE":       "",
+    "APP_PARALLEL":        "N",
+    "APP_INIT_USER":       "00000000000000000000000000000001",
+    "APP_CUR_USER":        "00000000000000000000000000000001",
+    "APP_CREATE_DATE":     "2017-11-01 01:30:32",
+    "APP_INIT_DATE":       "2017-11-01 01:30:32",
+    "APP_FINISH_DATE":     null,
+    "APP_UPDATE_DATE":     "2017-11-03 19:42:06",
+    "APP_DATA": {
+        "SYS_LANG":        "en",
+        "SYS_SKIN":        "big",
+        "SYS_SYS":         "workflow",
+        "APPLICATION":     "72415796659f95bf89a59e2011357239",
+        "PROCESS":         "73387376659f92ecf7a9382090189764",
+        "TASK":            "32685606259f92ed00fc0d0080958682",
+        "INDEX":           "2",
+        "USER_LOGGED":     "00000000000000000000000000000001",
+        "USR_USERNAME":    "admin",
+        "accountNo":       "RS-321",
+        "orderAmount":     342.50,
+        "APP_NUMBER":      "79",
+        "PIN":             "Z7OX",
+        "__VAR_CHANGED__": "PROCESS,PROCESS,SYS_SYS,SYS_LANG,SYS_SKIN,htmlTable,htmlTable,htmlTable",
+        "typeCurrentTask": "1"
     },
-    "APP_PIN":"63d21dfd49d86fb7650efbcd24ca4010",
-    "APP_DURATION":0,
-    "APP_DELAY_DURATION":0,
+    "APP_PIN":             "63d21dfd49d86fb7650efbcd24ca4010",
+    "APP_DURATION":        0,
+    "APP_DELAY_DURATION":  0,
     "APP_DRIVE_FOLDER_UID":"",
-    "APP_ROUTING_DATA":"a:0:{}",
-    "STATUS":"To do",
-    "TITLE":"#79",
-    "DESCRIPTION":"",
-    "CREATOR":"Administrator admin",
-    "CREATE_DATE":"2017-11-01 01:30:32",
-    "UPDATE_DATE":"2017-11-03 19:42:06"
+    "APP_ROUTING_DATA":    "a:0:{}",
+    "STATUS":              "To do",
+    "TITLE":               "#79",
+    "DESCRIPTION":         "",
+    "CREATOR":             "Administrator admin",
+    "CREATE_DATE":         "2017-11-01 01:30:32",
+    "UPDATE_DATE":         "2017-11-03 19:42:06"
 }
 ```
 
 --------------------
-### Get case and task info `GET extrarest/case/{app_uid}/{del_index}`
+### Get case and task info: `GET extrarest/case/{app_uid}/{del_index}`
 
 Get case and task information. Unlike the official endpoint 
 GET cases/{app_uid}/{del_index}, this endpoint doesn't check whether the logged-in user had 
@@ -199,75 +213,75 @@ object with information about the case and task.
 If successful, the HTTP status code is set to `200` and the response is an object
 containing informtion about the case and its task.
 
-**Example:** 
-
+**Example:**  
 *Request:*  
-`http://pm.example.com/api/1.0/workflow/extrarest/case/72415796659f95bf89a59e2011357239/3`
-
-*Response:*
+```
+http://pm.example.com/api/1.0/workflow/extrarest/case/72415796659f95bf89a59e2011357239/3
+```
+*Response:*  
 ```javascript
 {
-
-    "APP_UID":"72415796659f95bf89a59e2011357239",
-    "APP_TITLE":"#79",
-    "APP_DESCRIPTION":"",
-    "APP_NUMBER":79,
-    "APP_PARENT":"",
-    "APP_STATUS":"TO_DO",
-    "APP_STATUS_ID":2,
-    "PRO_UID":"73387376659f92ecf7a9382090189764",
-    "APP_PROC_STATUS":"",
-    "APP_PROC_CODE":"",
-    "APP_PARALLEL":"N",
-    "APP_INIT_USER":"00000000000000000000000000000001",
-    "APP_CUR_USER":"00000000000000000000000000000001",
-    "APP_CREATE_DATE":"2017-11-01 01:30:32",
-    "APP_INIT_DATE":"2017-11-01 01:30:32",
-    "APP_FINISH_DATE":null,
-    "APP_UPDATE_DATE":"2017-11-03 19:42:06",
-    "APP_DATA":{
-        "SYS_LANG":"en",
-        "SYS_SKIN":"big",
-        "SYS_SYS":"workflow",
-        "APPLICATION":"72415796659f95bf89a59e2011357239",
-        "PROCESS":"73387376659f92ecf7a9382090189764",
-        "TASK":"32685606259f92ed00fc0d0080958682",
-        "INDEX":"2",
-        "USER_LOGGED":"00000000000000000000000000000001",
-        "USR_USERNAME":"admin",
-        "selectedImagesUrls":"http:\/\/localhost:321\/sysworkflow\/en\/big\/73387376659f92ecf7a9382090189764\/discourse7747.png,http:\/\/localhost:321\/sysworkflow\/en\/big\/73387376659f92ecf7a9382090189764\/ValueBasedAssignmentTask7.png,http:\/\/localhost:321\/sysworkflow\/en\/big\/73387376659f92ecf7a9382090189764\/InstallPhpMyAdminPasswordConfirm.png",
-        "APP_NUMBER":"79",
-        "PIN":"Z7OX",
-        "__VAR_CHANGED__":"PROCESS,PROCESS,SYS_SYS,SYS_LANG,SYS_SKIN,htmlTable,htmlTable,htmlTable",
-        "typeCurrentTask":"1"
+    "APP_UID":             "72415796659f95bf89a59e2011357239",
+    "APP_TITLE":           "#79",
+    "APP_DESCRIPTION":     "",
+    "APP_NUMBER":          79,
+    "APP_PARENT":          "",
+    "APP_STATUS":          "TO_DO",
+    "APP_STATUS_ID":       2,
+    "PRO_UID":             "73387376659f92ecf7a9382090189764",
+    "APP_PROC_STATUS":     "",
+    "APP_PROC_CODE":       "",
+    "APP_PARALLEL":        "N",
+    "APP_INIT_USER":       "00000000000000000000000000000001",
+    "APP_CUR_USER":        "00000000000000000000000000000001",
+    "APP_CREATE_DATE":     "2017-11-01 01:30:32",
+    "APP_INIT_DATE":       "2017-11-01 01:30:32",
+    "APP_FINISH_DATE":     null,
+    "APP_UPDATE_DATE":     "2017-11-03 19:42:06",
+    "APP_DATA": {
+        "SYS_LANG":        "en",
+        "SYS_SKIN":        "big",
+        "SYS_SYS":         "workflow",
+        "APPLICATION":     "72415796659f95bf89a59e2011357239",
+        "PROCESS":         "73387376659f92ecf7a9382090189764",
+        "TASK":            "32685606259f92ed00fc0d0080958682",
+        "INDEX":           "2",
+        "USER_LOGGED":     "00000000000000000000000000000001",
+        "USR_USERNAME":    "admin",
+        "accountNo":       "RS-321",
+        "orderAmount":     342.50,
+        "APP_NUMBER":      "79",
+        "PIN":             "Z7OX",
+        "__VAR_CHANGED__": "PROCESS,PROCESS,SYS_SYS,SYS_LANG,SYS_SKIN,htmlTable,htmlTable,htmlTable",
+        "typeCurrentTask": "1"
     },
-    "APP_PIN":"63d21dfd49d86fb7650efbcd24ca4010",
-    "APP_DURATION":0,
-    "APP_DELAY_DURATION":0,
+    "APP_PIN":             "63d21dfd49d86fb7650efbcd24ca4010",
+    "APP_DURATION":        0,
+    "APP_DELAY_DURATION":  0,
     "APP_DRIVE_FOLDER_UID":"",
-    "APP_ROUTING_DATA":"a:0:{}",
-    "STATUS":"To do",
-    "TITLE":"#79",
-    "DESCRIPTION":"",
-    "CREATOR":"Administrator admin",
-    "CREATE_DATE":"2017-11-01 01:30:32",
-    "UPDATE_DATE":"2017-11-03 19:42:06",
-    "TAS_UID":"89054932459f92ed0438d57068674497",
-    "DEL_INDEX":1,
-    "DEL_PREVIOUS":0,
-    "DEL_TYPE":"NORMAL",
-    "DEL_PRIORITY":"3",
-    "DEL_THREAD_STATUS":"CLOSED",
-    "DEL_THREAD":1,
-    "DEL_DELEGATE_DATE":"2017-11-01 01:30:32",
-    "DEL_INIT_DATE":"2017-11-01 01:30:33",
-    "DEL_TASK_DUE_DATE":"2017-11-01 17:00:00",
-    "DEL_FINISH_DATE":"2017-11-01 01:31:17",
-    "CURRENT_USER_UID":"00000000000000000000000000000001",
-    "TASK":"89054932459f92ed0438d57068674497",
-    "INDEX":1,
-    "PRO_ID":29,
-    "CURRENT_USER":"Administrator admin"
+    "APP_ROUTING_DATA":    "a:0:{}",
+    "STATUS":              "To do",
+    "TITLE":               "#79",
+    "DESCRIPTION":         "",
+    "CREATOR":             "Administrator admin",
+    "CREATE_DATE":         "2017-11-01 01:30:32",
+    "UPDATE_DATE":         "2017-11-03 19:42:06"
+    "TAS_UID":             "89054932459f92ed0438d57068674497",
+    "DEL_INDEX":           1,
+    "DEL_PREVIOUS":        0,
+    "DEL_TYPE":            "NORMAL",
+    "DEL_PRIORITY":        "3",
+    "DEL_THREAD_STATUS":   "CLOSED",
+    "DEL_THREAD":          1,
+    "DEL_DELEGATE_DATE":   "2017-11-01 01:30:32",
+    "DEL_INIT_DATE":       "2017-11-01 01:30:33",
+    "DEL_TASK_DUE_DATE":   "2017-11-01 17:00:00",
+    "DEL_FINISH_DATE":     "2017-11-01 01:31:17",
+    "CURRENT_USER_UID":    "00000000000000000000000000000001",
+    "TASK":                "89054932459f92ed0438d57068674497",
+    "INDEX":               1,
+    "PRO_ID":              29,
+    "CURRENT_USER":        "Administrator admin"
 }
 ```
 
@@ -345,7 +359,6 @@ response is the following error object:
 }
 ```
 
-
 --------------------
 ### Get logged-in user info: `GET extrarest/login-user`
 
@@ -406,8 +419,8 @@ by ProcessMaker when translating elements such as the case status.
   
 **Response:**  
 If successful, the HTTP status code is `200` and the response is the 
-system language in `'*xx*'` or `'*xx*-*CC*'` format, such as `es` (Spanish) 
-or `pt-BR` (Brazilian Portuguese). 
+system language in "*xx*" or "*xx*-*CC*" format, such as `"es"` (Spanish) 
+or `"pt-BR"` (Brazilian Portuguese). 
 
 **Example:**  
 *Request:*  
@@ -432,7 +445,7 @@ this option when using REST, so this endpoint can be used instead.
 `PUT http://{domain-or-ip}/api/1.0/{workspace}/extrarest/language/{lang}`
 
 **URL parameters:**  
-  * _string_ `lang`: The language in `'*xx*'` or `'*xx*-*CC*'` format, 
+  * _string_ `lang`: The language in *xx* or *xx*-*CC* format, 
   such as `es` (Spanish) or `pt-BR` (Brazilian Portuguese). 
 
 **POST parameters:**  
@@ -465,10 +478,13 @@ If successful, the HTTP status code is set to `200` and the response is a sessio
 **Note:** The session ID can be attached to the end of URLs in ProcessMaker to access those
 pages with a login session:  
 `http://{domain-or-ip}/sys{workspace}/{lang}/{skin}/{folder}/{method}.php?sid={session-id}`  
+
 Example opening a case:  
 `http://example.com/sysworkflow/en/neoclassic/cases/cases_Open?APP_UID=9777918985a8dddbf884236088281261&DEL_INDEX=3&action=todo&sid=1234567890abcde1234567890abcde`  
+
 Example accessing case's process map:  
 `http://example.com/sysworkflow/en/neoclassic/cases/designer?prj_uid=6135378175a8dcdca9a2641037096319&prj_readonly=true&app_uid=9777918985a8dddbf884236088281261&sid=1234567890abcde1234567890abcde`  
+
 Example accessing an Input Document file:  
 `http://example.com/sysworkflow/en/neoclassic/cases/cases_ShowDocument?a=4699401854d8262f569e9a1070221206&sid=1234567890abcde1234567890abcde`  
 
@@ -579,7 +595,7 @@ if ($oRet->status == 200) {
 ```
 
 --------------------
-### Set user's default menu `PUT extrarest/user/{usr_uid}/config`
+### Set user's default menu: `PUT extrarest/user/{usr_uid}/config`
 
 Set a user's default menu, which is stored in a serialized array in the 
 `CONFIGURATION.CFG_VALUE` field in the database. This endpoint can
@@ -591,29 +607,30 @@ only be called by users who have the PM_USERS permission in their role.
   * _string_ `usr_uid`:  Unique ID of user.
 
 **POST parameters:**  
-  * _string_ `default_lang`: *Optional.* Default interface language in `'*xx*'` or `'*xx*-*CC*'` format, 
-  such as `"es"` (Spanish) or `"pt-BR"` (Brazilian Portuguese). Note that this parameter is deprecated and no longer used by ProcessMaker. 
-  * _string_ `default_menu`: *Optional.* Default main menu to set for the user: 
-    ** `""`: Default for role, 
-    ** `"PM_CASES"`: Home, 
-    ** `"PM_FACTORY"`: Designer, 
-    ** `"PM_SETUP"`: Admin,
-    ** `"PM_DASHBOARD"`: Dashboard,
-    ** or any custom menu defined by a plugin. 
-  * _string_ `default_cases_menu`: *Optional.* The default submenu selected in the cases sidebar under **Home**. 
-  Only used if the `default_menu` is set to `"PM_CASES"`. Available options:
-    ** `""`: The default which is the **Inbox**,
-    ** `"CASES_START_CASE"`: New case,
-    ** `"CASES_INBOX"`: Inbox,
-    ** `"CASES_DRAFT"`: Draft,
-    ** `"CASES_PAUSED"`: Paused, 
-    ** `"CASES_SENT"`: Participated, 
-    ** `"CASES_SELFSERVICE"`: Unassigned, 
-    ** `"CASES_SEARCH"`: Advanced search (need PM_ALLCASES in role), 
-    ** `"CASES_TO_REVISE"`: Review (need PM_SUPERVISOR in role),
-    ** `"CASES_TO_REASSIGN"`: Reassign (need PM_SUPERVISOR and PM_REASSIGNCASE in role),
-    ** `"CASES_FOLDERS"`: Documents (need PM_FOLDERS_VIEW in role),
-    ** or any custom submenu defined by a plugin.
+* _string_ `default_lang`: *Optional.* Default interface language in "*xx*" or "*xx*-*CC*" format, 
+such as `"es"` (Spanish) or `"pt-BR"` (Brazilian Portuguese). 
+Note that this parameter is deprecated and no longer used by ProcessMaker. 
+* _string_ `default_menu`: *Optional.* Default main menu to set for the user: 
+    * `""`: Default for role, 
+    * `"PM_CASES"`: Home, 
+    * `"PM_FACTORY"`: Designer, 
+    * `"PM_SETUP"`: Admin,
+    * `"PM_DASHBOARD"`: Dashboard,
+    * or any custom menu defined by a plugin. 
+* _string_ `default_cases_menu`: *Optional.* The default submenu selected in the cases sidebar under **Home**. 
+Only used if the `default_menu` is set to `"PM_CASES"`. Available options:
+    * `""`: The default which is the **Inbox**,
+    * `"CASES_START_CASE"`: New case,
+    * `"CASES_INBOX"`: Inbox,
+    * `"CASES_DRAFT"`: Draft,
+    * `"CASES_PAUSED"`: Paused, 
+    * `"CASES_SENT"`: Participated, 
+    * `"CASES_SELFSERVICE"`: Unassigned, 
+    * `"CASES_SEARCH"`: Advanced search (need PM_ALLCASES in role), 
+    * `"CASES_TO_REVISE"`: Review (need PM_SUPERVISOR in role),
+    * `"CASES_TO_REASSIGN"`: Reassign (need PM_SUPERVISOR and PM_REASSIGNCASE in role),
+    * `"CASES_FOLDERS"`: Documents (need PM_FOLDERS_VIEW in role),
+    * or any custom submenu defined by a plugin.
 
 **Response:**  
 If successful, the HTTP status code is set to `200` and the response is an object 
@@ -648,46 +665,145 @@ the PM_ALLCASES permission in her role.
   Set to `00000000000000000000000000000000` to retrieve a case list of the logged-in user.
   
 **Optional query string parameters:**  
-  * `start=*integer*`: The number where to begin listing cases.  
-  * `limit=*integer*`: The maximum number of cases to list.
-  * `action=*option*`: Specify the type of cases, which can be: 
+  * `start={integer}`: The number where to begin listing cases.  
+  * `limit={integer}`: The maximum number of cases to list.
+  * `action={option}`: Specify the type of cases, which can be:  
   `todo`, `draft`, `sent` (participated), `unassigned` (self service), `paused`, 
   `completed`, `cancelled`, `search` (Home > Advanced Search for users with PM_ALLCASES in role),
   `simple_search` (normal search), `to_revise` (Home > Review for process supervisors),
   `to_reassign` (Home > Reassign for process supervisors with PM_REASSIGNCASE permission),
   `all`, `gral` (general), `default` (like `todo`)
-  * `filter=*option*`: An additional filter for the type of case, which can be: 
+  * `filter={option}`: An additional filter for the type of case, which can be:  
   `read`, `unread`, `started`, `completed`
-  * `search=*string*`: Case-insensitive string to search for in the case number, case title, process title, 
+  * `search={string}`: Case-insensitive string to search for in the case number, case title, process title, 
   task title, assigned user's name and any additional fields if using the 
   [Custom Case List Builder](http://wiki.processmaker.com/3.0/Cases_List_Builder) plugin.
-  * `pro_uid=*uid*`: Retrieve cases from a particular process, specified by its unique ID. 
-  * `app_status=*status*`: If `action=search`, then this parameter is used to specify the 
-  case's status which can be: `TO_DO`, `DRAFT`, `PAUSED`, `CANCELLED`, `COMPLETED`, `ALL`
-  * `date_from=*YYYY-MM-DD*`: Retrieve cases whose task started or ended after or on the specified date.
-  * `date_to=*YYYY-MM-DD*`: Retrieve cases whose task started or ended before or on the specified date.
-  * `dir=*order*`: Set to `ASC` to sort cases in ascending order or `DESC` in descending order.
-  * `sort=*field*`: Database field in the APP_CACHE_VIEW table by which to sort cases.
-  * `cat_uid=*uid*`: Retrieve cases whose process is in a category, specified by its unique ID 
+  * `pro_uid={uid}`: Retrieve cases from a particular process, specified by its unique ID. 
+  * `app_status={status}`: If `action=search`, then this parameter is used to specify the 
+  case's status which can be:  
+  `TO_DO`, `DRAFT`, `PAUSED`, `CANCELLED`, `COMPLETED`, `ALL`
+  * `date_from={YYYY-MM-DD}`: Retrieve cases whose task started or ended after or on the specified date.
+  * `date_to={YYYY-MM-DD}`: Retrieve cases whose task started or ended before or on the specified date.
+  * `dir={order}`: Set to `ASC` to sort cases in ascending order or `DESC` in descending order.
+  * `sort={field}`: Database field in the APP_CACHE_VIEW table by which to sort cases.
+  * `cat_uid={uid}`: Retrieve cases whose process is in a category, specified by its unique ID 
   (found in the PROCESS_CATEGORY.CATEGORY_UID field in the database).
-  * `configuration=*integer*`: Set to `1` to use the configuration or `0` to 
+  * `configuration={integer}`: Set to `1` to use the configuration or `0` to 
   not use it when searching for cases. 
-  * `paged=*integer*`: Set to `1` to return a page of cases or `0` to not return the cases in a page. 
+  * `paged={integer}`: Set to `1` to return a page of cases or `0` to not return the cases in a page. 
   It is recommended to uses pages when dealing with a large numbers of cases.
-  * `newer_than=*YYYY-MM-DD*`: Retrieve cases whose task started or ended after the specified date.
+  * `newer_than={YYYY-MM-DD}`: Retrieve cases whose task started or ended after the specified date.
   This parameter is like `date_from`, but it is > rather than >= the date.
-  * `older_than=*YYYY-MM-DD*`: Retrieve cases whose task started or ended before the specified date. 
+  * `older_than={YYYY-MM-DD}`: Retrieve cases whose task started or ended before the specified date. 
   This parameter is like `date_to`, but it is < rather than <= the date.
 
 **Response:**  
-If successful, the HTTP status code is set to `200` and the response is an array of objects holding 
+If successful, the HTTP status code is set to `200` and the response is an object with the `totalCount` member which lists
+the total number of cases which match the search criteria and the `data` member which is an array of objects holding 
 information about each case.
 
-**Examples:**    
-For participated cases:  
-`http://{domain}/api/1.0/{workspace}/extrarest/cases/user/{usr_uid}?action=sent`
+**Example:**    
+Get a list of participated cases for the logged-in user since the start of the year 2018:
+*Request:*
+```
+GET http://pm.example.com/api/1.0/workflow/extrarest/cases/user/00000000000000000000000000000000?action=sent&date_from=2018-01-01
+```
+*Response:*  
+```javascript
+200 (OK)
+{
+  "totalCount": 2,
+  "data": [
+    {
+      "APP_UID":               "5295973255ac51bf10472f6060420954",
+      "DEL_INDEX":             "1",
+      "DEL_LAST_INDEX":        "1",
+      "APP_NUMBER":            "374",
+      "APP_STATUS":            "DRAFT",
+      "USR_UID":               "00000000000000000000000000000001",
+      "PREVIOUS_USR_UID":      "",
+      "TAS_UID":               "1029336105ac5121d1624d5021075541",
+      "PRO_UID":               "5348454895ac4096b9c3544003146878",
+      "DEL_DELEGATE_DATE":     "2018-04-04 14:39:45",
+      "DEL_INIT_DATE":         "2018-04-04 14:39:45",
+      "DEL_FINISH_DATE":       null,
+      "DEL_TASK_DUE_DATE":     "2018-04-05 14:39:45",
+      "DEL_RISK_DATE":         "2018-04-05 13:03:45",
+      "DEL_THREAD_STATUS":     "OPEN",
+      "APP_THREAD_STATUS":     "OPEN",
+      "APP_TITLE":             "#374",
+      "APP_PRO_TITLE":         "New Product Testing",
+      "APP_TAS_TITLE":         "Document New Product",
+      "APP_CURRENT_USER":      "admin Administrator",
+      "APP_DEL_PREVIOUS_USER": "",
+      "DEL_PRIORITY":          "NORMAL",
+      "DEL_DURATION":          "0",
+      "DEL_QUEUE_DURATION":    "0",
+      "DEL_DELAY_DURATION":    "0",
+      "DEL_STARTED":           "0",
+      "DEL_FINISHED":          "0",
+      "DEL_DELAYED":           "0",
+      "APP_CREATE_DATE":       "2018-04-04 14:39:45",
+      "APP_FINISH_DATE":       null,
+      "APP_UPDATE_DATE":       "2018-04-04 16:25:59",
+      "APP_OVERDUE_PERCENTAGE":"0",
+      "USR_FIRSTNAME":         "Administrator",
+      "USR_LASTNAME":          "admin",
+      "USR_USERNAME":          "admin",
+      "APPDELCR_APP_TAS_TITLE":"Task 1",
+      "USRCR_USR_UID":         "00000000000000000000000000000001",
+      "USRCR_USR_FIRSTNAME":   "Administrator",
+      "USRCR_USR_LASTNAME":    "admin",
+      "USRCR_USR_USERNAME":    "admin",
+      "APP_STATUS_LABEL":      "Draft"
+    },
+    {
+      "APP_UID":               "3633901045ac51b2bac1c58087855401",
+      "DEL_INDEX":             "1",
+      "DEL_LAST_INDEX":        "1",
+      "APP_NUMBER":            "373",
+      "APP_STATUS":            "DRAFT",
+      "USR_UID":               "00000000000000000000000000000001",
+      "PREVIOUS_USR_UID":      "",
+      "TAS_UID":               "1029336105ac5121d1624d5021075541",
+      "PRO_UID":               "5348454895ac4096b9c3544003146878",
+      "DEL_DELEGATE_DATE":     "2018-04-04 14:36:28",
+      "DEL_INIT_DATE":         "2018-04-04 14:36:28",
+      "DEL_FINISH_DATE":       null,
+      "DEL_TASK_DUE_DATE":     "2018-04-05 14:36:28",
+      "DEL_RISK_DATE":         "2018-04-05 13:00:28",
+      "DEL_THREAD_STATUS":     "OPEN",
+      "APP_THREAD_STATUS":     "OPEN",
+      "APP_TITLE":             "#373",
+      "APP_PRO_TITLE":         "Customer Complaint Process",
+      "APP_TAS_TITLE":         "Review Complaint",
+      "APP_CURRENT_USER":      "admin Administrator",
+      "APP_DEL_PREVIOUS_USER": "",
+      "DEL_PRIORITY":          "NORMAL",
+      "DEL_DURATION":          "0",
+      "DEL_QUEUE_DURATION":    "0",
+      "DEL_DELAY_DURATION":    "0",
+      "DEL_STARTED":           "0",
+      "DEL_FINISHED":          "0",
+      "DEL_DELAYED":           "0",
+      "APP_CREATE_DATE":       "2018-04-04 14:36:27",
+      "APP_FINISH_DATE":       null,
+      "APP_UPDATE_DATE":       "2018-04-04 14:36:27",
+      "APP_OVERDUE_PERCENTAGE":"0",
+      "USR_FIRSTNAME":         "Administrator",
+      "USR_LASTNAME":          "admin",
+      "USR_USERNAME":          "admin",
+      "APPDELCR_APP_TAS_TITLE":"Task 1",
+      "USRCR_USR_UID":         "00000000000000000000000000000001",
+      "USRCR_USR_FIRSTNAME":   "Administrator",
+      "USRCR_USR_LASTNAME":    "admin",
+      "USRCR_USR_USERNAME":    "admin",
+      "APP_STATUS_LABEL":      "Draft"
+    }
+  ]
+}
+```
 
-For unassigned cases:  
-`http://{domain}/api/1.0/{workspace}/extrarest/cases/user/{usr_uid}?action=unassigned`
+
 
    
