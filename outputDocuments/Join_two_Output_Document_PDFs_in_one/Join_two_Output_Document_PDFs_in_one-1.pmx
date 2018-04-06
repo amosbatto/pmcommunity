@@ -3,12 +3,12 @@
   <metadata>
     <meta key="vendor_version">3.2.1-community</meta>
     <meta key="vendor_version_code">Michelangelo</meta>
-    <meta key="export_timestamp">1523056433</meta>
-    <meta key="export_datetime"><![CDATA[2018-04-06T19:13:53-04:00]]></meta>
+    <meta key="export_timestamp">1523057889</meta>
+    <meta key="export_datetime"><![CDATA[2018-04-06T19:38:09-04:00]]></meta>
     <meta key="export_server_addr"><![CDATA[::1:321]]></meta>
     <meta key="export_server_os">Linux</meta>
     <meta key="export_server_php_version">50620</meta>
-    <meta key="export_version">3</meta>
+    <meta key="export_version">4</meta>
     <meta key="workspace">workflow</meta>
     <meta key="name">Join two Output Document PDFs in one</meta>
     <meta key="uid">7517045145ac7ea06c46bb4047290137</meta>
@@ -611,22 +611,23 @@ $sql1 = "SELECT * FROM APP_DOCUMENT WHERE APP_UID='$caseId' AND APP_DOC_STATUS='
 $sql2 = "SELECT * FROM APP_DOCUMENT WHERE APP_UID='$caseId' AND APP_DOC_STATUS='ACTIVE' 
   AND DOC_UID='$outDoc2Id' ORDER BY APP_DOC_INDEX DESC";
 
-@=query1 = $aDoc1Result = executeQuery($sql1);
-@=query2 = $aDoc2Result = executeQuery($sql2);
+$aDoc1Result = executeQuery($sql1);
+$aDoc2Result = executeQuery($sql2);
 
 if (count($aDoc1Result) == 0 or count($aDoc2Result) == 0) {
    throw new Exception("Unable to find case's Output Documents files in the APP_DOCUMENTS table"); 
 }
 
 $g = new G();
-@@path1 = $doc1Path = PATH_DOCUMENT. $g->getPathFromUID($caseId) .PATH_SEP. 'outdocs' .PATH_SEP. 
+$doc1Path = PATH_DOCUMENT. $g->getPathFromUID($caseId) .PATH_SEP. 'outdocs' .PATH_SEP. 
    $aDoc1Result[1]['APP_DOC_UID'] .'_'. $aDoc1Result[1]['DOC_VERSION'] .'.pdf';
-@@path2 = $doc2Path = PATH_DOCUMENT. $g->getPathFromUID($caseId) .PATH_SEP. 'outdocs' .PATH_SEP. 
+$doc2Path = PATH_DOCUMENT. $g->getPathFromUID($caseId) .PATH_SEP. 'outdocs' .PATH_SEP. 
    $aDoc2Result[1]['APP_DOC_UID'] .'_'. $aDoc2Result[1]['DOC_VERSION'] .'.pdf';   
 
 $joinedFilePath = tempnam(sys_get_temp_dir(), "joined_") . ".pdf";
 
 //join the two PDFs in 1 file:
+//if using Windows, need to include the path to the pdfunite command:
 exec("pdfunite $doc1Path $doc2Path $joinedFilePath", @=aOutput);
 
 //upload the joined PDF file as an Input Document to the current case:
