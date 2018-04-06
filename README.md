@@ -1,8 +1,8 @@
 # pmcommunity
-Code for the ProcessMaker community
+*Code for the ProcessMaker community*
 
 I have created this code to help users of ProcessMaker when answering questions
-at http://forum.processmaker.com
+at http://forum.processmaker.com. *Feedback and bug reports are welcome!*
 
 All code is Public Domain and can be used without any restrictions.
 
@@ -12,12 +12,11 @@ ProcessMaker Forum Manager since 2009
 
 ## Contents
 
-* **extraRest-*X*.*X*.tar**  Plugin to provide extra REST endpoints. 
-   For more information, see its  "README.md](extraRest/README.md) file or 
-   untar the plugin and examine the the source code in **extraRest/src/Services/Api/ExtraRest/Extra.php**.
+* [extraRest-1.*X*.tar](extraRest/extraRest-1.1.tar):  Plugin to provide extra REST endpoints. 
+   For more information, see its [README.md](extraRest/README.md) file.
 
-* **extraFunctions-0.*X*.tar** Plugin to provide extra PM functions to be used triggers and plugins. 
-   For more information, see its  "README.md](extraFunctions/README.md) file.
+* [extraFunctions-0.*X*.tar](extraFunctions/extraFunctions-0.1.tar): Plugin to provide extra PM functions to be used triggers and plugins. 
+   For more information, see its [README.md](extraFunctions/README.md) file.
 
 ## Installing Plugins in ProcessMaker
 To install these plugins, download the **.tar** file and login to ProcessMaker as

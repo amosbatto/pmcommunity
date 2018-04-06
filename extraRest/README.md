@@ -703,7 +703,7 @@ the total number of cases which match the search criteria and the `data` member 
 information about each case.
 
 **Example:**    
-Get a list of participated cases for the logged-in user since the start of the year 2018:
+Get a list of participated cases for the logged-in user since the start of the year 2018.  
 *Request:*
 ```
 GET http://pm.example.com/api/1.0/workflow/extrarest/cases/user/00000000000000000000000000000000?action=sent&date_from=2018-01-01
