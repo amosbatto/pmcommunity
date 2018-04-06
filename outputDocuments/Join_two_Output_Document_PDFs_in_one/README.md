@@ -100,8 +100,8 @@ $oAppDoc->update($aJoinedInfo);
 
 This trigger code will show the joined PDF in a MultipleFile field in a subsequent DynaForm in the process.
 
-Attached is the ["Join two Output Document PDFs in one" process](Join_two_Output_Document_PDFs_in_one-1.pmx) that can be used 
-to test this code.
+Attached is the ["Join two Output Document PDFs in one" process](Join_two_Output_Document_PDFs_in_one-1.pmx) 
+(*right click* on link and select **Save Link As**) that can be used to test this code.
 
 After filling out two DynaForms, the "Join 2 Output Document PDFs in 1" trigger
 will generate a joined PDF, so it can be displayed in the next DynaForm:
