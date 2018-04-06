@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProcessMaker-Project version="3.0">
+  <metadata>
+    <meta key="vendor_version">3.2.1-community</meta>
+    <meta key="vendor_version_code">Michelangelo</meta>
+    <meta key="export_timestamp">1523056433</meta>
+    <meta key="export_datetime"><![CDATA[2018-04-06T19:13:53-04:00]]></meta>
+    <meta key="export_server_addr"><![CDATA[::1:321]]></meta>
+    <meta key="export_server_os">Linux</meta>
+    <meta key="export_server_php_version">50620</meta>
+    <meta key="export_version">3</meta>
+    <meta key="workspace">workflow</meta>
+    <meta key="name">Join two Output Document PDFs in one</meta>
+    <meta key="uid">7517045145ac7ea06c46bb4047290137</meta>
+  </metadata>
+  <definition class="BPMN">
+    <table name="ACTIVITY">
+      <record>
+        <act_uid>6493141595ac7ea3c45acb6088583821</act_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <pro_uid>8312826465ac7ea07b9cdd5030774215</pro_uid>
+        <act_name>Task 1</act_name>
+        <act_type>TASK</act_type>
+        <act_is_for_compensation>0</act_is_for_compensation>
+        <act_start_quantity>1</act_start_quantity>
+        <act_completion_quantity>0</act_completion_quantity>
+        <act_task_type>EMPTY</act_task_type>
+        <act_implementation></act_implementation>
+        <act_instantiate>0</act_instantiate>
+        <act_script_type></act_script_type>
+        <act_script></act_script>
+        <act_loop_type>EMPTY</act_loop_type>
+        <act_test_before>0</act_test_before>
+        <act_loop_maximum>0</act_loop_maximum>
+        <act_loop_condition>0</act_loop_condition>
+        <act_loop_cardinality>0</act_loop_cardinality>
+        <act_loop_behavior>0</act_loop_behavior>
+        <act_is_adhoc>0</act_is_adhoc>
+        <act_is_collapsed>0</act_is_collapsed>
+        <act_completion_condition>0</act_completion_condition>
+        <act_ordering>0</act_ordering>
+        <act_cancel_remaining_instances>1</act_cancel_remaining_instances>
+        <act_protocol>0</act_protocol>
+        <act_method>0</act_method>
+        <act_is_global>0</act_is_global>
+        <act_referer>0</act_referer>
+        <act_default_flow>0</act_default_flow>
+        <act_master_diagram>0</act_master_diagram>
+        <bou_uid>2526751255ac7ea3c529cb9082016992</bou_uid>
+        <dia_uid>3554117725ac7ea07862664008155190</dia_uid>
+        <element_uid>6493141595ac7ea3c45acb6088583821</element_uid>
+        <bou_element>8745597995ac7ea10eb2265008181111</bou_element>
+        <bou_element_type>bpmnActivity</bou_element_type>
+        <bou_x>221</bou_x>
+        <bou_y>101</bou_y>
+        <bou_width>150</bou_width>
+        <bou_height>75</bou_height>
+        <bou_rel_position>0</bou_rel_position>
+        <bou_size_identical>0</bou_size_identical>
+        <bou_container>bpmnDiagram</bou_container>
+      </record>
+    </table>
+    <table name="ARTIFACT"/>
+    <table name="BOUND">
+      <record>
+        <bou_uid>2526751255ac7ea3c529cb9082016992</bou_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <dia_uid>3554117725ac7ea07862664008155190</dia_uid>
+        <element_uid>6493141595ac7ea3c45acb6088583821</element_uid>
+        <bou_element>8745597995ac7ea10eb2265008181111</bou_element>
+        <bou_element_type>bpmnActivity</bou_element_type>
+        <bou_x>221</bou_x>
+        <bou_y>101</bou_y>
+        <bou_width>150</bou_width>
+        <bou_height>75</bou_height>
+        <bou_rel_position>0</bou_rel_position>
+        <bou_size_identical>0</bou_size_identical>
+        <bou_container>bpmnDiagram</bou_container>
+      </record>
+      <record>
+        <bou_uid>5159994025ac7ea3da04c29082736003</bou_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <dia_uid>3554117725ac7ea07862664008155190</dia_uid>
+        <element_uid>6430306345ac7ea3d9eb442010491196</element_uid>
+        <bou_element>8745597995ac7ea10eb2265008181111</bou_element>
+        <bou_element_type>bpmnEvent</bou_element_type>
+        <bou_x>425</bou_x>
+        <bou_y>122</bou_y>
+        <bou_width>33</bou_width>
+        <bou_height>33</bou_height>
+        <bou_rel_position>0</bou_rel_position>
+        <bou_size_identical>0</bou_size_identical>
+        <bou_container>bpmnDiagram</bou_container>
+      </record>
+      <record>
+        <bou_uid>9079374145ac7ea3d727075069107720</bou_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <dia_uid>3554117725ac7ea07862664008155190</dia_uid>
+        <element_uid>5941016305ac7ea3d714172023830354</element_uid>
+        <bou_element>8745597995ac7ea10eb2265008181111</bou_element>
+        <bou_element_type>bpmnEvent</bou_element_type>
+        <bou_x>143</bou_x>
+        <bou_y>122</bou_y>
+        <bou_width>33</bou_width>
+        <bou_height>33</bou_height>
+        <bou_rel_position>0</bou_rel_position>
+        <bou_size_identical>0</bou_size_identical>
+        <bou_container>bpmnDiagram</bou_container>
+      </record>
+    </table>
+    <table name="DATA"/>
+    <table name="DIAGRAM">
+      <record>
+        <dia_uid>3554117725ac7ea07862664008155190</dia_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <dia_name>Join two Output Document PDFs in one</dia_name>
+        <dia_is_closable>0</dia_is_closable>
+      </record>
+    </table>
+    <table name="DOCUMENTATION"/>
+    <table name="EVENT">
+      <record>
+        <evn_uid>5941016305ac7ea3d714172023830354</evn_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <pro_uid>8312826465ac7ea07b9cdd5030774215</pro_uid>
+        <evn_name></evn_name>
+        <evn_type>START</evn_type>
+        <evn_marker>EMPTY</evn_marker>
+        <evn_is_interrupting>1</evn_is_interrupting>
+        <evn_attached_to></evn_attached_to>
+        <evn_cancel_activity>0</evn_cancel_activity>
+        <evn_activity_ref></evn_activity_ref>
+        <evn_wait_for_completion>0</evn_wait_for_completion>
+        <evn_error_name></evn_error_name>
+        <evn_error_code></evn_error_code>
+        <evn_escalation_name></evn_escalation_name>
+        <evn_escalation_code></evn_escalation_code>
+        <evn_condition></evn_condition>
+        <evn_message>LEAD</evn_message>
+        <evn_operation_name></evn_operation_name>
+        <evn_operation_implementation_ref></evn_operation_implementation_ref>
+        <evn_time_date></evn_time_date>
+        <evn_time_cycle></evn_time_cycle>
+        <evn_time_duration></evn_time_duration>
+        <evn_behavior>CATCH</evn_behavior>
+        <bou_uid>9079374145ac7ea3d727075069107720</bou_uid>
+        <dia_uid>3554117725ac7ea07862664008155190</dia_uid>
+        <element_uid>5941016305ac7ea3d714172023830354</element_uid>
+        <bou_element>8745597995ac7ea10eb2265008181111</bou_element>
+        <bou_element_type>bpmnEvent</bou_element_type>
+        <bou_x>143</bou_x>
+        <bou_y>122</bou_y>
+        <bou_width>33</bou_width>
+        <bou_height>33</bou_height>
+        <bou_rel_position>0</bou_rel_position>
+        <bou_size_identical>0</bou_size_identical>
+        <bou_container>bpmnDiagram</bou_container>
+      </record>
+      <record>
+        <evn_uid>6430306345ac7ea3d9eb442010491196</evn_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <pro_uid>8312826465ac7ea07b9cdd5030774215</pro_uid>
+        <evn_name></evn_name>
+        <evn_type>END</evn_type>
+        <evn_marker>EMPTY</evn_marker>
+        <evn_is_interrupting>1</evn_is_interrupting>
+        <evn_attached_to></evn_attached_to>
+        <evn_cancel_activity>0</evn_cancel_activity>
+        <evn_activity_ref></evn_activity_ref>
+        <evn_wait_for_completion>0</evn_wait_for_completion>
+        <evn_error_name></evn_error_name>
+        <evn_error_code></evn_error_code>
+        <evn_escalation_name></evn_escalation_name>
+        <evn_escalation_code></evn_escalation_code>
+        <evn_condition></evn_condition>
+        <evn_message></evn_message>
+        <evn_operation_name></evn_operation_name>
+        <evn_operation_implementation_ref></evn_operation_implementation_ref>
+        <evn_time_date></evn_time_date>
+        <evn_time_cycle></evn_time_cycle>
+        <evn_time_duration></evn_time_duration>
+        <evn_behavior>THROW</evn_behavior>
+        <bou_uid>5159994025ac7ea3da04c29082736003</bou_uid>
+        <dia_uid>3554117725ac7ea07862664008155190</dia_uid>
+        <element_uid>6430306345ac7ea3d9eb442010491196</element_uid>
+        <bou_element>8745597995ac7ea10eb2265008181111</bou_element>
+        <bou_element_type>bpmnEvent</bou_element_type>
+        <bou_x>425</bou_x>
+        <bou_y>122</bou_y>
+        <bou_width>33</bou_width>
+        <bou_height>33</bou_height>
+        <bou_rel_position>0</bou_rel_position>
+        <bou_size_identical>0</bou_size_identical>
+        <bou_container>bpmnDiagram</bou_container>
+      </record>
+    </table>
+    <table name="EXTENSION"/>
+    <table name="FLOW">
+      <record>
+        <flo_uid>2516255225ac7ea3dd4e0a6046637372</flo_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <dia_uid>3554117725ac7ea07862664008155190</dia_uid>
+        <flo_type>SEQUENCE</flo_type>
+        <flo_name> </flo_name>
+        <flo_element_origin>6493141595ac7ea3c45acb6088583821</flo_element_origin>
+        <flo_element_origin_type>bpmnActivity</flo_element_origin_type>
+        <flo_element_origin_port>0</flo_element_origin_port>
+        <flo_element_dest>6430306345ac7ea3d9eb442010491196</flo_element_dest>
+        <flo_element_dest_type>bpmnEvent</flo_element_dest_type>
+        <flo_element_dest_port>0</flo_element_dest_port>
+        <flo_is_inmediate>1</flo_is_inmediate>
+        <flo_condition></flo_condition>
+        <flo_x1>372</flo_x1>
+        <flo_y1>139</flo_y1>
+        <flo_x2>425</flo_x2>
+        <flo_y2>139</flo_y2>
+        <flo_state><![CDATA[[{"x":372,"y":139},{"x":425,"y":139}]]]></flo_state>
+        <flo_position>1</flo_position>
+      </record>
+      <record>
+        <flo_uid>6788860635ac7ea3dd4ac80028440596</flo_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <dia_uid>3554117725ac7ea07862664008155190</dia_uid>
+        <flo_type>SEQUENCE</flo_type>
+        <flo_name> </flo_name>
+        <flo_element_origin>5941016305ac7ea3d714172023830354</flo_element_origin>
+        <flo_element_origin_type>bpmnEvent</flo_element_origin_type>
+        <flo_element_origin_port>0</flo_element_origin_port>
+        <flo_element_dest>6493141595ac7ea3c45acb6088583821</flo_element_dest>
+        <flo_element_dest_type>bpmnActivity</flo_element_dest_type>
+        <flo_element_dest_port>0</flo_element_dest_port>
+        <flo_is_inmediate>1</flo_is_inmediate>
+        <flo_condition></flo_condition>
+        <flo_x1>176</flo_x1>
+        <flo_y1>139</flo_y1>
+        <flo_x2>221</flo_x2>
+        <flo_y2>139</flo_y2>
+        <flo_state><![CDATA[[{"x":176,"y":139},{"x":221,"y":139}]]]></flo_state>
+        <flo_position>1</flo_position>
+      </record>
+    </table>
+    <table name="GATEWAY"/>
+    <table name="LANE"/>
+    <table name="LANESET"/>
+    <table name="PARTICIPANT"/>
+    <table name="PROCESS">
+      <record>
+        <pro_uid>8312826465ac7ea07b9cdd5030774215</pro_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <dia_uid>3554117725ac7ea07862664008155190</dia_uid>
+        <pro_name>Join two Output Document PDFs in one</pro_name>
+        <pro_type>NONE</pro_type>
+        <pro_is_executable>0</pro_is_executable>
+        <pro_is_closed>0</pro_is_closed>
+        <pro_is_subprocess>0</pro_is_subprocess>
+      </record>
+    </table>
+    <table name="PROJECT">
+      <record>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <prj_name>Join two Output Document PDFs in one</prj_name>
+        <prj_description></prj_description>
+        <prj_target_namespace></prj_target_namespace>
+        <prj_expresion_language></prj_expresion_language>
+        <prj_type_language></prj_type_language>
+        <prj_exporter></prj_exporter>
+        <prj_exporter_version></prj_exporter_version>
+        <prj_create_date><![CDATA[2018-04-06 17:43:35]]></prj_create_date>
+        <prj_update_date><![CDATA[2018-04-06 18:27:49]]></prj_update_date>
+        <prj_author>00000000000000000000000000000001</prj_author>
+        <prj_author_version></prj_author_version>
+        <prj_original_source></prj_original_source>
+      </record>
+    </table>
+  </definition>
+  <definition class="workflow">
+    <table name="process">
+      <record>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <pro_title>Join two Output Document PDFs in one</pro_title>
+        <pro_description></pro_description>
+        <pro_parent>7517045145ac7ea06c46bb4047290137</pro_parent>
+        <pro_time>1</pro_time>
+        <pro_timeunit>DAYS</pro_timeunit>
+        <pro_status>ACTIVE</pro_status>
+        <pro_type_day></pro_type_day>
+        <pro_type>NORMAL</pro_type>
+        <pro_assignment>FALSE</pro_assignment>
+        <pro_show_map>0</pro_show_map>
+        <pro_show_message>0</pro_show_message>
+        <pro_subprocess>0</pro_subprocess>
+        <pro_tri_create></pro_tri_create>
+        <pro_tri_open></pro_tri_open>
+        <pro_tri_deleted></pro_tri_deleted>
+        <pro_tri_canceled></pro_tri_canceled>
+        <pro_tri_paused></pro_tri_paused>
+        <pro_tri_reassigned></pro_tri_reassigned>
+        <pro_tri_unpaused></pro_tri_unpaused>
+        <pro_type_process>PUBLIC</pro_type_process>
+        <pro_show_delegate>0</pro_show_delegate>
+        <pro_show_dynaform>0</pro_show_dynaform>
+        <pro_category></pro_category>
+        <pro_sub_category></pro_sub_category>
+        <pro_industry>0</pro_industry>
+        <pro_update_date><![CDATA[2018-04-06 18:27:49]]></pro_update_date>
+        <pro_create_date><![CDATA[2018-04-06 17:43:34]]></pro_create_date>
+        <pro_create_user>00000000000000000000000000000001</pro_create_user>
+        <pro_height>5000</pro_height>
+        <pro_width>10000</pro_width>
+        <pro_title_x>0</pro_title_x>
+        <pro_title_y>0</pro_title_y>
+        <pro_debug>1</pro_debug>
+        <pro_dynaforms><![CDATA[a:1:{s:7:"PROCESS";s:0:"";}]]></pro_dynaforms>
+        <pro_derivation_screen_tpl></pro_derivation_screen_tpl>
+        <pro_cost>0</pro_cost>
+        <pro_unit_cost><![CDATA[$]]></pro_unit_cost>
+        <pro_itee>1</pro_itee>
+        <pro_action_done><![CDATA[a:1:{i:0;s:41:"GATEWAYTOGATEWAY_DELETE_CORRUPTED_RECORDS";}]]></pro_action_done>
+        <pro_category_label>No Category</pro_category_label>
+        <pro_bpmn>1</pro_bpmn>
+      </record>
+    </table>
+    <table name="tasks">
+      <record>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <tas_uid>6493141595ac7ea3c45acb6088583821</tas_uid>
+        <tas_title>Task 1</tas_title>
+        <tas_description></tas_description>
+        <tas_def_title></tas_def_title>
+        <tas_def_subject_message></tas_def_subject_message>
+        <tas_def_proc_code></tas_def_proc_code>
+        <tas_def_message></tas_def_message>
+        <tas_def_description></tas_def_description>
+        <tas_type>NORMAL</tas_type>
+        <tas_duration>1</tas_duration>
+        <tas_delay_type></tas_delay_type>
+        <tas_temporizer>0</tas_temporizer>
+        <tas_type_day></tas_type_day>
+        <tas_timeunit>DAYS</tas_timeunit>
+        <tas_alert>FALSE</tas_alert>
+        <tas_priority_variable></tas_priority_variable>
+        <tas_assign_type>BALANCED</tas_assign_type>
+        <tas_assign_variable><![CDATA[@@SYS_NEXT_USER_TO_BE_ASSIGNED]]></tas_assign_variable>
+        <tas_group_variable></tas_group_variable>
+        <tas_mi_instance_variable><![CDATA[@@SYS_VAR_TOTAL_INSTANCE]]></tas_mi_instance_variable>
+        <tas_mi_complete_variable><![CDATA[@@SYS_VAR_TOTAL_INSTANCES_COMPLETE]]></tas_mi_complete_variable>
+        <tas_assign_location>FALSE</tas_assign_location>
+        <tas_assign_location_adhoc>FALSE</tas_assign_location_adhoc>
+        <tas_transfer_fly>FALSE</tas_transfer_fly>
+        <tas_last_assigned>00000000000000000000000000000001</tas_last_assigned>
+        <tas_user>0</tas_user>
+        <tas_can_upload>FALSE</tas_can_upload>
+        <tas_view_upload>FALSE</tas_view_upload>
+        <tas_view_additional_documentation>FALSE</tas_view_additional_documentation>
+        <tas_can_cancel>FALSE</tas_can_cancel>
+        <tas_owner_app>FALSE</tas_owner_app>
+        <stg_uid></stg_uid>
+        <tas_can_pause>FALSE</tas_can_pause>
+        <tas_can_send_message>TRUE</tas_can_send_message>
+        <tas_can_delete_docs>FALSE</tas_can_delete_docs>
+        <tas_self_service>FALSE</tas_self_service>
+        <tas_start>TRUE</tas_start>
+        <tas_to_last_user>FALSE</tas_to_last_user>
+        <tas_send_last_email>FALSE</tas_send_last_email>
+        <tas_derivation>NORMAL</tas_derivation>
+        <tas_posx>221</tas_posx>
+        <tas_posy>101</tas_posy>
+        <tas_width>110</tas_width>
+        <tas_height>60</tas_height>
+        <tas_color></tas_color>
+        <tas_evn_uid></tas_evn_uid>
+        <tas_boundary></tas_boundary>
+        <tas_derivation_screen_tpl></tas_derivation_screen_tpl>
+        <tas_selfservice_timeout>0</tas_selfservice_timeout>
+        <tas_selfservice_time>0</tas_selfservice_time>
+        <tas_selfservice_time_unit></tas_selfservice_time_unit>
+        <tas_selfservice_trigger_uid></tas_selfservice_trigger_uid>
+        <tas_selfservice_execution>EVERY_TIME</tas_selfservice_execution>
+        <tas_not_email_from_format>0</tas_not_email_from_format>
+        <tas_offline>FALSE</tas_offline>
+        <tas_email_server_uid></tas_email_server_uid>
+        <tas_auto_root>FALSE</tas_auto_root>
+        <tas_receive_server_uid></tas_receive_server_uid>
+        <tas_receive_last_email>FALSE</tas_receive_last_email>
+        <tas_receive_email_from_format>0</tas_receive_email_from_format>
+        <tas_receive_message_type>text</tas_receive_message_type>
+        <tas_receive_message_template>alert_message.html</tas_receive_message_template>
+        <tas_receive_subject_message></tas_receive_subject_message>
+        <tas_receive_message></tas_receive_message>
+      </record>
+    </table>
+    <table name="routes">
+      <record>
+        <rou_uid>3309902465ac7f465ec4b34066614195</rou_uid>
+        <rou_parent>0</rou_parent>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <tas_uid>6493141595ac7ea3c45acb6088583821</tas_uid>
+        <rou_next_task>-1</rou_next_task>
+        <rou_case>1</rou_case>
+        <rou_type>SEQUENTIAL</rou_type>
+        <rou_default>0</rou_default>
+        <rou_condition></rou_condition>
+        <rou_to_last_user>FALSE</rou_to_last_user>
+        <rou_optional>FALSE</rou_optional>
+        <rou_send_email>TRUE</rou_send_email>
+        <rou_sourceanchor>1</rou_sourceanchor>
+        <rou_targetanchor>0</rou_targetanchor>
+        <rou_to_port>1</rou_to_port>
+        <rou_from_port>2</rou_from_port>
+        <rou_evn_uid></rou_evn_uid>
+        <gat_uid></gat_uid>
+      </record>
+    </table>
+    <table name="lanes"/>
+    <table name="gateways"/>
+    <table name="inputs">
+      <record>
+        <inp_doc_uid>1526387325ac7ea8dbdb153081079371</inp_doc_uid>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <inp_doc_title>Join Client Info and Bill</inp_doc_title>
+        <inp_doc_description></inp_doc_description>
+        <inp_doc_form_needed>VIRTUAL</inp_doc_form_needed>
+        <inp_doc_original>ORIGINAL</inp_doc_original>
+        <inp_doc_published>PRIVATE</inp_doc_published>
+        <inp_doc_versioning>0</inp_doc_versioning>
+        <inp_doc_destination_path></inp_doc_destination_path>
+        <inp_doc_tags>INPUT</inp_doc_tags>
+        <inp_doc_type_file><![CDATA[.*]]></inp_doc_type_file>
+        <inp_doc_max_filesize>0</inp_doc_max_filesize>
+        <inp_doc_max_filesize_unit>KB</inp_doc_max_filesize_unit>
+      </record>
+    </table>
+    <table name="outputs">
+      <record>
+        <out_doc_uid>5784874685ac7ea5febd611022221969</out_doc_uid>
+        <out_doc_title>Client Information</out_doc_title>
+        <out_doc_description></out_doc_description>
+        <out_doc_filename>clientInformation</out_doc_filename>
+        <out_doc_template><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+</head>
+<body>
+<p>Client Name: @#clientName</p>
+<p>Client Address: @#clientAddress</p>
+<p>Client Cell Number: @#clientCellPhone</p>
+</body>
+</html>]]></out_doc_template>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <out_doc_report_generator>TCPDF</out_doc_report_generator>
+        <out_doc_landscape>0</out_doc_landscape>
+        <out_doc_media>Letter</out_doc_media>
+        <out_doc_left_margin>20</out_doc_left_margin>
+        <out_doc_right_margin>20</out_doc_right_margin>
+        <out_doc_top_margin>20</out_doc_top_margin>
+        <out_doc_bottom_margin>20</out_doc_bottom_margin>
+        <out_doc_generate>BOTH</out_doc_generate>
+        <out_doc_type>HTML</out_doc_type>
+        <out_doc_current_revision></out_doc_current_revision>
+        <out_doc_field_mapping></out_doc_field_mapping>
+        <out_doc_versioning>1</out_doc_versioning>
+        <out_doc_destination_path></out_doc_destination_path>
+        <out_doc_tags></out_doc_tags>
+        <out_doc_pdf_security_enabled>0</out_doc_pdf_security_enabled>
+        <out_doc_pdf_security_open_password></out_doc_pdf_security_open_password>
+        <out_doc_pdf_security_owner_password></out_doc_pdf_security_owner_password>
+        <out_doc_pdf_security_permissions></out_doc_pdf_security_permissions>
+        <out_doc_open_type>1</out_doc_open_type>
+      </record>
+      <record>
+        <out_doc_uid>7324190235ac7ea78a4df60022265728</out_doc_uid>
+        <out_doc_title>Client Bill</out_doc_title>
+        <out_doc_description></out_doc_description>
+        <out_doc_filename>clientBill</out_doc_filename>
+        <out_doc_template><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+</head>
+<body>
+<p>Product: @#productSent</p>
+<p>Price: @#price</p>
+<p>Shipping &amp; Handling: @#shippingAndHandling</p>
+<p>Total Price: @#totalPrice</p>
+</body>
+</html>]]></out_doc_template>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <out_doc_report_generator>TCPDF</out_doc_report_generator>
+        <out_doc_landscape>0</out_doc_landscape>
+        <out_doc_media>Letter</out_doc_media>
+        <out_doc_left_margin>20</out_doc_left_margin>
+        <out_doc_right_margin>20</out_doc_right_margin>
+        <out_doc_top_margin>20</out_doc_top_margin>
+        <out_doc_bottom_margin>20</out_doc_bottom_margin>
+        <out_doc_generate>BOTH</out_doc_generate>
+        <out_doc_type>HTML</out_doc_type>
+        <out_doc_current_revision></out_doc_current_revision>
+        <out_doc_field_mapping></out_doc_field_mapping>
+        <out_doc_versioning>1</out_doc_versioning>
+        <out_doc_destination_path></out_doc_destination_path>
+        <out_doc_tags></out_doc_tags>
+        <out_doc_pdf_security_enabled>0</out_doc_pdf_security_enabled>
+        <out_doc_pdf_security_open_password></out_doc_pdf_security_open_password>
+        <out_doc_pdf_security_owner_password></out_doc_pdf_security_owner_password>
+        <out_doc_pdf_security_permissions></out_doc_pdf_security_permissions>
+        <out_doc_open_type>1</out_doc_open_type>
+      </record>
+    </table>
+    <table name="dynaforms">
+      <record>
+        <dyn_uid>1099205705ac7eab3e9b096025608594</dyn_uid>
+        <dyn_title>Client Information</dyn_title>
+        <dyn_description></dyn_description>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <dyn_type>xmlform</dyn_type>
+        <dyn_filename><![CDATA[7517045145ac7ea06c46bb4047290137/1099205705ac7eab3e9b096025608594]]></dyn_filename>
+        <dyn_content><![CDATA[{"name":"Client Information","description":"","items":[{"type":"form","variable":"","var_uid":"","dataType":"","id":"1099205705ac7eab3e9b096025608594","name":"Client Information","description":"","mode":"edit","script":"","language":"en","externalLibs":"","printable":false,"items":[[{"type":"title","id":"title0000000001","label":"Client Information","colSpan":12}],[{"type":"text","variable":"clientName","var_uid":"1021046885ac7eada1619f4028220735","dataType":"string","protectedValue":false,"id":"clientName","name":"clientName","label":"Client Name","defaultValue":"","placeholder":"","hint":"","required":false,"textTransform":"none","validate":"","validateMessage":"","maxLength":1000,"formula":"","mode":"parent","operation":"","dbConnection":"workflow","dbConnectionLabel":"PM Database","sql":"","var_name":"clientName","colSpan":12}],[{"type":"textarea","variable":"clientAddress","var_uid":"7600871025ac7eaf305fe99064381463","dataType":"string","protectedValue":false,"id":"clientAddress","name":"clientAddress","label":"Client Address","defaultValue":"","placeholder":"","hint":"","required":false,"validate":"","validateMessage":"","mode":"parent","dbConnection":"workflow","dbConnectionLabel":"PM Database","sql":"","rows":"5","var_name":"clientAddress","colSpan":12}],[{"type":"text","variable":"clientCellPhone","var_uid":"4531865235ac7eb1b526b45091015569","dataType":"string","protectedValue":false,"id":"clientCellPhone","name":"clientCellPhone","label":"Client Cell Phone","defaultValue":"","placeholder":"","hint":"","required":false,"textTransform":"none","validate":"","validateMessage":"","maxLength":1000,"formula":"","mode":"parent","operation":"","dbConnection":"workflow","dbConnectionLabel":"PM Database","sql":"","var_name":"clientCellPhone","colSpan":12}],[{"type":"submit","id":"submit0000000001","name":"submit0000000001","label":"Submit","colSpan":12}]],"variables":[{"var_uid":"1021046885ac7eada1619f4028220735","prj_uid":"7517045145ac7ea06c46bb4047290137","var_name":"clientName","var_field_type":"string","var_field_size":10,"var_label":"string","var_dbconnection":"workflow","var_dbconnection_label":"PM Database","var_sql":"","var_null":0,"var_default":"","var_accepted_values":"[]","inp_doc_uid":""},{"var_uid":"7600871025ac7eaf305fe99064381463","prj_uid":"7517045145ac7ea06c46bb4047290137","var_name":"clientAddress","var_field_type":"string","var_field_size":10,"var_label":"string","var_dbconnection":"workflow","var_dbconnection_label":"PM Database","var_sql":"","var_null":0,"var_default":"","var_accepted_values":"[]","inp_doc_uid":""},{"var_uid":"4531865235ac7eb1b526b45091015569","prj_uid":"7517045145ac7ea06c46bb4047290137","var_name":"clientCellPhone","var_field_type":"string","var_field_size":10,"var_label":"string","var_dbconnection":"workflow","var_dbconnection_label":"PM Database","var_sql":"","var_null":0,"var_default":"","var_accepted_values":"[]","inp_doc_uid":""}]}]}]]></dyn_content>
+        <dyn_label></dyn_label>
+        <dyn_version>2</dyn_version>
+        <dyn_update_date><![CDATA[2018-04-06 17:48:39]]></dyn_update_date>
+      </record>
+      <record>
+        <dyn_uid>4978780965ac7eb4e246368043238472</dyn_uid>
+        <dyn_title>Client Bill</dyn_title>
+        <dyn_description></dyn_description>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <dyn_type>xmlform</dyn_type>
+        <dyn_filename><![CDATA[7517045145ac7ea06c46bb4047290137/4978780965ac7eb4e246368043238472]]></dyn_filename>
+        <dyn_content><![CDATA[{"name":"Client Bill","description":"","items":[{"type":"form","variable":"","var_uid":"","dataType":"","id":"4978780965ac7eb4e246368043238472","name":"Client Bill","description":"","mode":"edit","script":"","language":"en","externalLibs":"","printable":false,"items":[[{"type":"title","id":"title0000000001","label":"Client's Bill","colSpan":12}],[{"type":"text","variable":"productSent","var_uid":"8402974875ac7eb70082520074509509","dataType":"string","protectedValue":false,"id":"productSent","name":"productSent","label":"Product Sent","defaultValue":"","placeholder":"","hint":"","required":false,"textTransform":"none","validate":"","validateMessage":"","maxLength":1000,"formula":"","mode":"parent","operation":"","dbConnection":"workflow","dbConnectionLabel":"PM Database","sql":"","var_name":"productSent","colSpan":12}],[{"type":"text","variable":"price","var_uid":"4654926215ac7eb8da9ae02094288683","dataType":"string","protectedValue":false,"id":"price","name":"price","label":"Price","defaultValue":"","placeholder":"","hint":"","required":false,"textTransform":"none","validate":"","validateMessage":"","maxLength":1000,"formula":"","mode":"parent","operation":"","dbConnection":"workflow","dbConnectionLabel":"PM Database","sql":"","var_name":"price","colSpan":12}],[{"type":"text","variable":"shippingAndHandling","var_uid":"2730003745ac7ebb61dd1b2066709101","dataType":"string","protectedValue":false,"id":"shippingAndHandling","name":"shippingAndHandling","label":"Shipping & Handling charge","defaultValue":"","placeholder":"","hint":"","required":false,"textTransform":"none","validate":"","validateMessage":"","maxLength":1000,"formula":"","mode":"parent","operation":"","dbConnection":"workflow","dbConnectionLabel":"PM Database","sql":"","var_name":"shippingAndHandling","colSpan":12}],[{"type":"text","variable":"totalPrice","var_uid":"5183149685ac7ebdfb169d0003859245","dataType":"string","protectedValue":false,"id":"totalPrice","name":"totalPrice","label":"Total Price","defaultValue":"","placeholder":"","hint":"","required":false,"textTransform":"none","validate":"","validateMessage":"","maxLength":1000,"formula":"","mode":"parent","operation":"","dbConnection":"workflow","dbConnectionLabel":"PM Database","sql":"","var_name":"totalPrice","colSpan":12}],[{"type":"submit","id":"submit0000000001","name":"submit0000000001","label":"Submit","colSpan":12}]],"variables":[{"var_uid":"8402974875ac7eb70082520074509509","prj_uid":"7517045145ac7ea06c46bb4047290137","var_name":"productSent","var_field_type":"string","var_field_size":10,"var_label":"string","var_dbconnection":"workflow","var_dbconnection_label":"PM Database","var_sql":"","var_null":0,"var_default":"","var_accepted_values":"[]","inp_doc_uid":""},{"var_uid":"4654926215ac7eb8da9ae02094288683","prj_uid":"7517045145ac7ea06c46bb4047290137","var_name":"price","var_field_type":"string","var_field_size":10,"var_label":"string","var_dbconnection":"workflow","var_dbconnection_label":"PM Database","var_sql":"","var_null":0,"var_default":"","var_accepted_values":"[]","inp_doc_uid":""},{"var_uid":"2730003745ac7ebb61dd1b2066709101","prj_uid":"7517045145ac7ea06c46bb4047290137","var_name":"shippingAndHandling","var_field_type":"string","var_field_size":10,"var_label":"string","var_dbconnection":"workflow","var_dbconnection_label":"PM Database","var_sql":"","var_null":0,"var_default":"","var_accepted_values":"[]","inp_doc_uid":""},{"var_uid":"5183149685ac7ebdfb169d0003859245","prj_uid":"7517045145ac7ea06c46bb4047290137","var_name":"totalPrice","var_field_type":"string","var_field_size":10,"var_label":"string","var_dbconnection":"workflow","var_dbconnection_label":"PM Database","var_sql":"","var_null":0,"var_default":"","var_accepted_values":"[]","inp_doc_uid":""}]}]}]]></dyn_content>
+        <dyn_label></dyn_label>
+        <dyn_version>2</dyn_version>
+        <dyn_update_date><![CDATA[2018-04-06 17:52:20]]></dyn_update_date>
+      </record>
+      <record>
+        <dyn_uid>8637254205ac7ed0951a177014926477</dyn_uid>
+        <dyn_title>Show joined PDFs</dyn_title>
+        <dyn_description></dyn_description>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <dyn_type>xmlform</dyn_type>
+        <dyn_filename><![CDATA[7517045145ac7ea06c46bb4047290137/8637254205ac7ed0951a177014926477]]></dyn_filename>
+        <dyn_content><![CDATA[{"name":"Show joined PDFs","description":"","items":[{"type":"form","variable":"","var_uid":"","dataType":"","id":"8637254205ac7ed0951a177014926477","name":"Show joined PDFs","description":"","mode":"edit","script":"","language":"en","externalLibs":"","printable":false,"items":[[{"type":"title","id":"title0000000001","label":"Joined PDF file","colSpan":12}],[{"type":"multipleFile","variable":"clientInfoAndBillPdf","var_uid":"7444864205ac7ed8da4a6c7019337322","dataType":"multiplefile","protectedValue":false,"id":"clientInfoAndBillPdf","name":"clientInfoAndBillPdf","label":"Client Info & Bill PDF","inputDocument":"","required":false,"dnd":false,"extensions":"*","size":1024,"sizeUnity":"KB","mode":"parent","multiple":false,"inp_doc_uid":"","var_name":"clientInfoAndBillPdf","colSpan":12}],[{"type":"submit","id":"submit0000000001","name":"submit0000000001","label":"Submit","colSpan":12}]],"variables":[{"var_uid":"7444864205ac7ed8da4a6c7019337322","prj_uid":"7517045145ac7ea06c46bb4047290137","var_name":"clientInfoAndBillPdf","var_field_type":"multiplefile","var_field_size":10,"var_label":"multiplefile","var_dbconnection":"workflow","var_dbconnection_label":"PM Database","var_sql":"","var_null":0,"var_default":"","var_accepted_values":"[]","inp_doc_uid":""}]}]}]]></dyn_content>
+        <dyn_label></dyn_label>
+        <dyn_version>2</dyn_version>
+        <dyn_update_date><![CDATA[2018-04-06 17:59:26]]></dyn_update_date>
+      </record>
+    </table>
+    <table name="steps">
+      <record>
+        <step_uid>1536320585ac7f11597fcc4041661029</step_uid>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <tas_uid>6493141595ac7ea3c45acb6088583821</tas_uid>
+        <step_type_obj>DYNAFORM</step_type_obj>
+        <step_uid_obj>1099205705ac7eab3e9b096025608594</step_uid_obj>
+        <step_condition></step_condition>
+        <step_position>1</step_position>
+        <step_mode>EDIT</step_mode>
+      </record>
+      <record>
+        <step_uid>2414563135ac7f11c5a6d82085785773</step_uid>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <tas_uid>6493141595ac7ea3c45acb6088583821</tas_uid>
+        <step_type_obj>DYNAFORM</step_type_obj>
+        <step_uid_obj>8637254205ac7ed0951a177014926477</step_uid_obj>
+        <step_condition></step_condition>
+        <step_position>3</step_position>
+        <step_mode>EDIT</step_mode>
+      </record>
+      <record>
+        <step_uid>5947345845ac7f118f2b638085373667</step_uid>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <tas_uid>6493141595ac7ea3c45acb6088583821</tas_uid>
+        <step_type_obj>DYNAFORM</step_type_obj>
+        <step_uid_obj>4978780965ac7eb4e246368043238472</step_uid_obj>
+        <step_condition></step_condition>
+        <step_position>2</step_position>
+        <step_mode>EDIT</step_mode>
+      </record>
+      <record>
+        <step_uid>7551530175ac7f1297c5614027724585</step_uid>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <tas_uid>6493141595ac7ea3c45acb6088583821</tas_uid>
+        <step_type_obj>INPUT_DOCUMENT</step_type_obj>
+        <step_uid_obj>1526387325ac7ea8dbdb153081079371</step_uid_obj>
+        <step_condition></step_condition>
+        <step_position>4</step_position>
+        <step_mode>EDIT</step_mode>
+      </record>
+    </table>
+    <table name="triggers">
+      <record>
+        <tri_uid>6032061845ac7f10106cd28093108552</tri_uid>
+        <tri_title>Join 2 Output Document PDFs in 1</tri_title>
+        <tri_description></tri_description>
+        <pro_uid>7517045145ac7ea06c46bb4047290137</pro_uid>
+        <tri_type>SCRIPT</tri_type>
+        <tri_webbot><![CDATA[$outDoc1Id = "5784874685ac7ea5febd611022221969"; //set to ID of Output Document 1
+$outDoc2Id = "7324190235ac7ea78a4df60022265728"; //set to ID of Output Document 2
+$joinedInpDocId = '1526387325ac7ea8dbdb153081079371'; //set to ID of Input Document
+//set to name of MultipleFile field's ID and variable, which is the same in this example:
+$joinedFileVariableName = 'clientInfoAndBillPdf'; 
+//set to the name of the joined file:
+$joinedFilename = preg_replace('/[^a-zA-Z0-9]/', '_', @@clientName) . '_InfoAndBill'; 
+
+//not necessary to generate these if the Output Documents already exist in the case: 
+PMFGenerateOutputDocument($outDoc1Id);
+PMFGenerateOutputDocument($outDoc2Id);
+
+//get the records of the generated Output Document files from the database:
+$caseId = @@APPLICATION;
+$sql1 = "SELECT * FROM APP_DOCUMENT WHERE APP_UID='$caseId' AND APP_DOC_STATUS='ACTIVE' 
+   AND DOC_UID='$outDoc1Id' ORDER BY APP_DOC_INDEX DESC";
+$sql2 = "SELECT * FROM APP_DOCUMENT WHERE APP_UID='$caseId' AND APP_DOC_STATUS='ACTIVE' 
+  AND DOC_UID='$outDoc2Id' ORDER BY APP_DOC_INDEX DESC";
+
+@=query1 = $aDoc1Result = executeQuery($sql1);
+@=query2 = $aDoc2Result = executeQuery($sql2);
+
+if (count($aDoc1Result) == 0 or count($aDoc2Result) == 0) {
+   throw new Exception("Unable to find case's Output Documents files in the APP_DOCUMENTS table"); 
+}
+
+$g = new G();
+@@path1 = $doc1Path = PATH_DOCUMENT. $g->getPathFromUID($caseId) .PATH_SEP. 'outdocs' .PATH_SEP. 
+   $aDoc1Result[1]['APP_DOC_UID'] .'_'. $aDoc1Result[1]['DOC_VERSION'] .'.pdf';
+@@path2 = $doc2Path = PATH_DOCUMENT. $g->getPathFromUID($caseId) .PATH_SEP. 'outdocs' .PATH_SEP. 
+   $aDoc2Result[1]['APP_DOC_UID'] .'_'. $aDoc2Result[1]['DOC_VERSION'] .'.pdf';   
+
+$joinedFilePath = tempnam(sys_get_temp_dir(), "joined_") . ".pdf";
+
+//join the two PDFs in 1 file:
+exec("pdfunite $doc1Path $doc2Path $joinedFilePath", @=aOutput);
+
+//upload the joined PDF file as an Input Document to the current case:
+$joinedFileId = PMFAddInputDocument($joinedInpDocId, null, 1, 'INPUT', '', 'Add',
+   @@APPLICATION, @%INDEX, @@TASK, @@USER_LOGGED, 'file', $joinedFilePath);
+   
+//Delete the temporary joined PDF file from the server's file system:
+unlink($joinedFilePath);
+
+if (empty($joinedFileId)) {
+   throw new Exception("Unable to upload joined file '$joinedFilePath' to case.");
+} 
+
+//if needing to display the joined PDF file in a MultipleFile field, 
+//then set its variable in the case:
+$aJoinedFile = array(array(
+   'appDocUid' => $joinedFileId,
+   'version'   => 1,
+   'name'      => $joinedFilename .'.pdf'
+));
+PMFSendVariables($caseId, array($joinedFileVariableName => $aJoinedFile));
+
+//Also need to associate the joined file with the MultipleFile field 
+//by setting the field name of the MultipleFile in the file's record in
+//APP_DOCUMENT.APP_DOC_FIELDNAME in the database. In this example, 
+//assuming that the MultipleFile's ID and variable name are the same.
+$oAppDoc = new AppDocument();
+$aJoinedInfo = $oAppDoc->Load($joinedFileId, 1);
+
+//Set to the ID of the MultipleFile field:
+$aJoinedInfo['APP_DOC_FIELDNAME'] = $joinedFileVariableName; 
+$aJoinedInfo['APP_DOC_FILENAME']  = $joinedFilename .'.pdf';
+
+//save changes to the APP_DOCUMENT record in the database:
+$oAppDoc->update($aJoinedInfo);]]></tri_webbot>
+        <tri_param></tri_param>
+      </record>
+    </table>
+    <table name="taskusers">
+      <record>
+        <tas_uid>6493141595ac7ea3c45acb6088583821</tas_uid>
+        <usr_uid>52898684659f997f5d3c234069212953</usr_uid>
+        <tu_type>1</tu_type>
+        <tu_relation>2</tu_relation>
+      </record>
+    </table>
+    <table name="groupwfs">
+      <record>
+        <grp_uid>52898684659f997f5d3c234069212953</grp_uid>
+        <grp_title>00.Admin</grp_title>
+        <grp_status>ACTIVE</grp_status>
+        <grp_ldap_dn></grp_ldap_dn>
+        <grp_ux>NORMAL</grp_ux>
+      </record>
+    </table>
+    <table name="steptriggers">
+      <record>
+        <step_uid>2414563135ac7f11c5a6d82085785773</step_uid>
+        <tas_uid>6493141595ac7ea3c45acb6088583821</tas_uid>
+        <tri_uid>6032061845ac7f10106cd28093108552</tri_uid>
+        <st_type>BEFORE</st_type>
+        <st_condition></st_condition>
+        <st_position>1</st_position>
+      </record>
+    </table>
+    <table name="dbconnections"/>
+    <table name="reportTables"/>
+    <table name="reportTablesVars"/>
+    <table name="stepSupervisor"/>
+    <table name="objectPermissions"/>
+    <table name="subProcess"/>
+    <table name="caseTracker"/>
+    <table name="caseTrackerObject"/>
+    <table name="stage"/>
+    <table name="fieldCondition"/>
+    <table name="event"/>
+    <table name="caseScheduler"/>
+    <table name="processCategory"/>
+    <table name="taskExtraProperties"/>
+    <table name="processUser"/>
+    <table name="processVariables">
+      <record>
+        <var_uid>1021046885ac7eada1619f4028220735</var_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <var_name>clientName</var_name>
+        <var_field_type>string</var_field_type>
+        <var_field_size>10</var_field_size>
+        <var_label>string</var_label>
+        <var_dbconnection>workflow</var_dbconnection>
+        <var_sql></var_sql>
+        <var_null>0</var_null>
+        <var_default></var_default>
+        <var_accepted_values><![CDATA[[]]]></var_accepted_values>
+        <inp_doc_uid></inp_doc_uid>
+      </record>
+      <record>
+        <var_uid>2730003745ac7ebb61dd1b2066709101</var_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <var_name>shippingAndHandling</var_name>
+        <var_field_type>string</var_field_type>
+        <var_field_size>10</var_field_size>
+        <var_label>string</var_label>
+        <var_dbconnection>workflow</var_dbconnection>
+        <var_sql></var_sql>
+        <var_null>0</var_null>
+        <var_default></var_default>
+        <var_accepted_values><![CDATA[[]]]></var_accepted_values>
+        <inp_doc_uid></inp_doc_uid>
+      </record>
+      <record>
+        <var_uid>4531865235ac7eb1b526b45091015569</var_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <var_name>clientCellPhone</var_name>
+        <var_field_type>string</var_field_type>
+        <var_field_size>10</var_field_size>
+        <var_label>string</var_label>
+        <var_dbconnection>workflow</var_dbconnection>
+        <var_sql></var_sql>
+        <var_null>0</var_null>
+        <var_default></var_default>
+        <var_accepted_values><![CDATA[[]]]></var_accepted_values>
+        <inp_doc_uid></inp_doc_uid>
+      </record>
+      <record>
+        <var_uid>4654926215ac7eb8da9ae02094288683</var_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <var_name>price</var_name>
+        <var_field_type>string</var_field_type>
+        <var_field_size>10</var_field_size>
+        <var_label>string</var_label>
+        <var_dbconnection>workflow</var_dbconnection>
+        <var_sql></var_sql>
+        <var_null>0</var_null>
+        <var_default></var_default>
+        <var_accepted_values><![CDATA[[]]]></var_accepted_values>
+        <inp_doc_uid></inp_doc_uid>
+      </record>
+      <record>
+        <var_uid>5183149685ac7ebdfb169d0003859245</var_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <var_name>totalPrice</var_name>
+        <var_field_type>string</var_field_type>
+        <var_field_size>10</var_field_size>
+        <var_label>string</var_label>
+        <var_dbconnection>workflow</var_dbconnection>
+        <var_sql></var_sql>
+        <var_null>0</var_null>
+        <var_default></var_default>
+        <var_accepted_values><![CDATA[[]]]></var_accepted_values>
+        <inp_doc_uid></inp_doc_uid>
+      </record>
+      <record>
+        <var_uid>7444864205ac7ed8da4a6c7019337322</var_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <var_name>clientInfoAndBillPdf</var_name>
+        <var_field_type>multiplefile</var_field_type>
+        <var_field_size>10</var_field_size>
+        <var_label>multiplefile</var_label>
+        <var_dbconnection>workflow</var_dbconnection>
+        <var_sql></var_sql>
+        <var_null>0</var_null>
+        <var_default></var_default>
+        <var_accepted_values><![CDATA[[]]]></var_accepted_values>
+        <inp_doc_uid></inp_doc_uid>
+      </record>
+      <record>
+        <var_uid>7600871025ac7eaf305fe99064381463</var_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <var_name>clientAddress</var_name>
+        <var_field_type>string</var_field_type>
+        <var_field_size>10</var_field_size>
+        <var_label>string</var_label>
+        <var_dbconnection>workflow</var_dbconnection>
+        <var_sql></var_sql>
+        <var_null>0</var_null>
+        <var_default></var_default>
+        <var_accepted_values><![CDATA[[]]]></var_accepted_values>
+        <inp_doc_uid></inp_doc_uid>
+      </record>
+      <record>
+        <var_uid>8402974875ac7eb70082520074509509</var_uid>
+        <prj_uid>7517045145ac7ea06c46bb4047290137</prj_uid>
+        <var_name>productSent</var_name>
+        <var_field_type>string</var_field_type>
+        <var_field_size>10</var_field_size>
+        <var_label>string</var_label>
+        <var_dbconnection>workflow</var_dbconnection>
+        <var_sql></var_sql>
+        <var_null>0</var_null>
+        <var_default></var_default>
+        <var_accepted_values><![CDATA[[]]]></var_accepted_values>
+        <inp_doc_uid></inp_doc_uid>
+      </record>
+    </table>
+    <table name="webEntry"/>
+    <table name="webEntryEvent"/>
+    <table name="messageType"/>
+    <table name="messageTypeVariable"/>
+    <table name="messageEventDefinition"/>
+    <table name="scriptTask"/>
+    <table name="timerEvent"/>
+    <table name="emailEvent"/>
+    <table name="filesManager"/>
+    <table name="abeConfiguration"/>
+    <table name="elementTask"/>
+  </definition>
+  <workflow-files>
+    <file target="dynaforms">
+      <file_name>Client Information</file_name>
+      <file_path><![CDATA[7517045145ac7ea06c46bb4047290137/1099205705ac7eab3e9b096025608594.xml]]></file_path>
+      <file_content><![CDATA[PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPGR5bmFGb3JtIHR5cGU9InhtbGZvcm0iIG5hbWU9Ijc1MTcwNDUxNDVhYzdlYTA2YzQ2YmI0MDQ3MjkwMTM3LzEwOTkyMDU3MDVhYzdlYWIzZTliMDk2MDI1NjA4NTk0IiB3aWR0aD0iNTAwIiBlbmFibGV0ZW1wbGF0ZT0iMCIgbW9kZT0iIiBuZXh0c3RlcHNhdmU9InByb21wdCI+CjwvZHluYUZvcm0+]]></file_content>
+    </file>
+    <file target="dynaforms">
+      <file_name>Client Bill</file_name>
+      <file_path><![CDATA[7517045145ac7ea06c46bb4047290137/4978780965ac7eb4e246368043238472.xml]]></file_path>
+      <file_content><![CDATA[PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPGR5bmFGb3JtIHR5cGU9InhtbGZvcm0iIG5hbWU9Ijc1MTcwNDUxNDVhYzdlYTA2YzQ2YmI0MDQ3MjkwMTM3LzQ5Nzg3ODA5NjVhYzdlYjRlMjQ2MzY4MDQzMjM4NDcyIiB3aWR0aD0iNTAwIiBlbmFibGV0ZW1wbGF0ZT0iMCIgbW9kZT0iIiBuZXh0c3RlcHNhdmU9InByb21wdCI+CjwvZHluYUZvcm0+]]></file_content>
+    </file>
+    <file target="dynaforms">
+      <file_name>Show joined PDFs</file_name>
+      <file_path><![CDATA[7517045145ac7ea06c46bb4047290137/8637254205ac7ed0951a177014926477.xml]]></file_path>
+      <file_content><![CDATA[PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPGR5bmFGb3JtIHR5cGU9InhtbGZvcm0iIG5hbWU9Ijc1MTcwNDUxNDVhYzdlYTA2YzQ2YmI0MDQ3MjkwMTM3Lzg2MzcyNTQyMDVhYzdlZDA5NTFhMTc3MDE0OTI2NDc3IiB3aWR0aD0iNTAwIiBlbmFibGV0ZW1wbGF0ZT0iMCIgbW9kZT0iIiBuZXh0c3RlcHNhdmU9InByb21wdCI+CjwvZHluYUZvcm0+]]></file_content>
+    </file>
+  </workflow-files>
+</ProcessMaker-Project>
