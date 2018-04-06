@@ -1,9 +1,9 @@
 ## Joining two Output Documents in one file 
 
-Author: Amos Batto (amos@processmaker.com)
-Created: 2018-04-05 (version 1)
-Tested in: PM 3.2.1 Community in Debian 8.4 with PHP 5.6.20 and Poppler 0.26.5
-License: Public domain
+Author: Amos Batto (amos@processmaker.com)  
+Created: 2018-04-05 (version 1)  
+Tested in: PM 3.2.1 Community in Debian 8.4 with PHP 5.6.20 and Poppler 0.26.5  
+License: Public domain  
 
 This example shows how to join two generated Output Document PDF files in 
 one PDF that is then added as an Input Document file in the current case.
@@ -95,7 +95,7 @@ $aJoinedInfo['APP_DOC_FILENAME']  = $joinedFilename .'.pdf';
 
 //save changes to the APP_DOCUMENT record in the database:
 $oAppDoc->update($aJoinedInfo);
-[/code]
+```
 
 This trigger code will show the joined PDF in a MultipleFile field in a subsequent DynaForm in the process.
 
