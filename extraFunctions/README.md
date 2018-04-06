@@ -137,15 +137,15 @@ $aTasks = executeQuery($sql);
 //Calculate task times:
 for ($i=1; $i <= count($aTasks); $i++) {
    $aTasks[$i]['TASK_TIME'] = PMFTaskDuration(
-      $aTasks[$i]['USR_UID'],
-      $aTasks[$i]['PRO_UID'],
-      $aTasks[$i]['TAS_UID'],
       $aTasks[$i]['DEL_DELEGATE_DATE'],
       $aTasks[$i]['DEL_FINISH_DATE'],
-      'string'
+      'string',
+      $aTasks[$i]['USR_UID'],
+      $aTasks[$i]['TAS_UID'],
+      $aTasks[$i]['PRO_UID']
    );         
 }
-@=TasksGrid = $aTasks;
+@=tasksGrid = $aTasks;
 ```
 -------------------------
 ### PMFActivityInfo()
