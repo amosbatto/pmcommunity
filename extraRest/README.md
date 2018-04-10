@@ -510,9 +510,15 @@ which by default is named "wf_workflow".
 **POST parameters:**  
   * _string_ `sql`: SQL SELECT statement to execute.
 
+**Note 1:** For security reasons, the code for this endpoint is commented out, but it can
+be enabled if removing the `/* ... */` around the code. If needing to executing SQL 
+queries, it is recommended to adapt the code for your specific purpose and 
+include the specific query in the code of the endpoint and only pass the
+parameters that need to be changed to endpoint. If this endpoint is allowed to 
+execute any SQL query, a hacker could use it to steal all the information from the
+ProcessMaker database. 
 
-**Note:** For security reasons, only SELECT statements in the current workspace's workflow
-database are allowed. If thinking of modifying this endpoint to allow UPDATE, INSERT and DELETE
+**Note 2:** If thinking of modifying this endpoint to allow UPDATE, INSERT and DELETE
 statements, then make sure to change the ProcessMaker configuration files. See:
 http://wiki.processmaker.com/3.0/Consulting_the_ProcessMaker_databases#Protecting_PM_Core_Tables
  
@@ -560,6 +566,11 @@ User Wilson Jane has 8 cases since the start of the year 2018.
 User Batto Amos has 6 cases since the start of the year 2018.
 User Gomez Freddy has 1 cases since the start of the year 2018.
 ```
+*This example is only provided to show what is possible with a REST endpoint. 
+If needing to use this endpoint in production, remember to modify the source 
+code of this endpoint to only execute the specific SQL query that you need, 
+and not use it to execute any SQL query as shown in this example. Otherwise,
+you are providing a way for hackers to attack your instalation of ProcessMaker.*
 
 --------------------
 ### Get user's default menu: `GET extrarest/user/{usr_uid}/config`
