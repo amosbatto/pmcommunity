@@ -62,5 +62,5 @@ When the following Web Entry form holding the "contractFile" field is filled out
 
 The `@@contractFile_label` case variable will be set to `"[workflow.png]"` after the form is submitted. Then, when the case is opened inside ProcessMaker, the following Dynaform is displayed which contains both the "contractFile" File field and a Link field to download the file. It is recommended to use a File field if wishing to allow the user to change the file or a Link field if the file should not be changed by the user. 
 
-![DisplayUploadedFileInLinkField.png](DisplayUploadedFileInLinkField.png)
+![DynformWithLinkToUploadedFile.png](DynformWithLinkToUploadedFile.png)
 
