@@ -1,17 +1,17 @@
 ## Displaying a link to an uploaded file from a Web Entry 
 
-Process: [Web_Entry_with_uploaded_file-1.pmx](Web_Entry_with_uploaded_file-1.pmx) (*right click* on link and select **Save Link As**)  
-Author: Amos Batto (amos@processmaker.com)  
-Created: 2018-04-09 (version 1)  
-Tested in: PM 3.2.1 Community in Debian 8.4 with PHP 5.6.20   
-License: Public domain  
+**Process:** [Web_Entry_with_uploaded_file-1.pmx](Web_Entry_with_uploaded_file-1.pmx) (*right click* on link and select **Save Link As**)  
+**Author:** Amos Batto (amos@processmaker.com)  
+**Created:** 2018-04-11 (version 1)  
+**Tested in:** PM 3.2.1 Community in Debian 8.4 with PHP 5.6.20   
+**License:** Public domain  
 
 Please leave feedback and comments about this process at:  
 https://forum.processmaker.com/viewtopic.php?f=41&t=730430&p=814005#p814005
 
 MultipleFile fields (which are called "fileUpload" in the Dynaform designer) don't work in Web Entry in ProcessMaker 3.2.1 and earlier, so File fields should be used instead. If needing to upload multiple files in a Web Entry, it is recommended to place File files inside a grid. 
 
-Unfortunately, File fields in Web Entry forms behave differently from normal Dynaforms when they are submitted. When the Web Entry form is submitted, ProcessMaker does not create the **@@_file-variable_** variable with the ID of the uploaded file in a JSON array, like it normally would when submitting a Dynaform. Instead, the Web Entry only creates a **@@*file-variable*_label** variable, such as `@@contractFile_label` which holds the filename of the uploaded file, such as `"[march-contract.doc]"`. Notice that filename isn't enclosed in quotation marks so it is bad JSON and can't be properly decoded with PHP's `json_decode()` or similar functions.
+Unfortunately, File fields in Web Entry forms behave differently from normal Dynaforms when they are submitted. When the Web Entry form is submitted, ProcessMaker does not create the **@@_file-variable_** variable with the ID of the uploaded file in a JSON array, like it normally would when submitting a Dynaform. Instead, the Web Entry only creates a **@@*file-variable*_label** variable, such as `@@contractFile_label` which holds the filename of the uploaded file, such as `"[march-contract.doc]"`. Notice that the filename isn't enclosed in quotation marks so it is bad JSON and can't be properly decoded with PHP's `json_decode()` or similar functions.
 
 To get around these problems, the `APP_DOCUMENT` table in the database needs to be queried to lookup the record of the uploaded file. With the information from the `APP_DOCUMENT` table, a URL to download the uploaded file can be constructed. This URL can be displayed in a Link field inside a Dynaform or placed inside the template of an Output Document or email. In version 3.1 and later, the `APP_DOCUMENT.APP_DOC_FILENAME` field was added to the database to hold the filenames of files in Processmaker cases, but in early versions the filenames have to be looked up in the `CONTENT.CON_VALUE` field in the database. This example shows how to look up the filename in the CONTENT table, since it should work in all ProcessMaker versions.
 
