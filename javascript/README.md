@@ -53,7 +53,8 @@ The __*field*.showRequired()__ method shows the red asterisk (`*`) next to a spe
 __getFieldById("*field-id*").showRequired()__
 
 The __*field*.hideRequired()__ hides the red asterisk (`*`) for required fields:
-getFieldById("field-id").hideRequired()
+
+**getFieldById("field-id").hideRequired()**
 
 These methods can only be used on fields that are marked as **required** or have a defined **validate** 
 property. Unless there is a compelling reason to hide the asterisk without effecting the validation,
@@ -67,7 +68,7 @@ __*form*.items.asArray()__ returns an array of all the fields in a Dynaform.
 
 __getFormById("*form-id*").items.asArray()__
 
-Example:
+**Example:**
 ```javascript
 var aFields = getFormById( $("form").prop("id") ).items.asArray();
 for (var i = 0; i < aFields.length; i++) {
