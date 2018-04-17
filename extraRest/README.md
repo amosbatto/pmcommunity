@@ -37,7 +37,7 @@ For more information, untar the plugin and examine the source code in
 * [Get user's default menu: `GET extrarest/user/{usr_uid}/config`](#get-users-default-menu-get-extrarestuserusr_uidconfig)
 * [Set user's default menu: `PUT extrarest/user/{usr_uid}/config`](#set-users-default-menu-put-extrarestuserusr_uidconfig)
 * [Get user's case list: `GET extrarest/cases/user/{user_uid}?{param=option}`](#get-users-case-list-get-extrarestcasesuseruser_uidparamoption)
-* [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`]
+* [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`](#append-rows-to-a-pm-table-put-extrarestpmtablepmt_uidappend)
 * [Refill a PM Table: `PUT extrarest/pmtable/{pmt_uid}/refill`](#refill-a-pm-table-put-extrarestpmtablepmt_uidrefill)
 
 -------------------
