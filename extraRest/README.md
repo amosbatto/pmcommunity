@@ -4,7 +4,7 @@ The extraRest plugin includes extra REST endpoints to be used in ProcessMaker.
 Some of these endpoints get around security restrictions in ProcessMaker's official
 endpoints. Others provide functionality not provided by the official endpoints.
 
-**Plugin:**    [extraRest-1.2.tar](extraRest-1.2.tar) (right click on link and select **Save Link As** in the context menu)
+**Plugin:**    [extraRest-1.2.tar](extraRest-1.2.tar) (right click on link and select **Save Link As** in the context menu)  
 **Author:**    Amos Batto (amos@processmaker.com)  
 **Version:**   1.2 (2018-04-17)  
 **Tested in:** ProcessMaker 3.2.1 Community in Debian 8.4 (probably will work in all 3.*X* versions)  
@@ -38,7 +38,7 @@ For more information, untar the plugin and examine the source code in
 * [Set user's default menu: `PUT extrarest/user/{usr_uid}/config`](#set-users-default-menu-put-extrarestuserusr_uidconfig)
 * [Get user's case list: `GET extrarest/cases/user/{user_uid}?{param=option}`](#get-users-case-list-get-extrarestcasesuseruser_uidparamoption)
 * [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`]
-* [Refill a PM Table: `PUT extrarest/pmtable/{pmt_uid}/refill`]
+* [Refill a PM Table: `PUT extrarest/pmtable/{pmt_uid}/refill`](#refill-a-pm-table-put-extrarestpmtablepmt_uidrefill)
 
 -------------------
 ### Claim case: `POST extrarest/case/{app_uid}/claim`
@@ -830,8 +830,8 @@ permissions in his/her in role to use this endpoint.
 
 **URL parameters:**  
   * _string_ `pmt_uid`: The unique ID of the PM Table (which can be found 
-  in with [GET /pmtable](http://wiki.processmaker.com/3.0/REST_API_Administration#PM_Tables_List:_GET_.2Fpmtable)
-  or querying the `ADDITIONAL_TABLES.ADD_TAB_UID` field in the database.
+  with [GET /pmtable](http://wiki.processmaker.com/3.0/REST_API_Administration#PM_Tables_List:_GET_.2Fpmtable)
+  or by querying the `ADDITIONAL_TABLES.ADD_TAB_UID` field in the database).
   
 **POST parameters:**  
   * _array_ `rows`: An array of objects, where each object represents
@@ -858,10 +858,10 @@ response will be the number of inserted rows.
 
 If the name of a field is misspelled or not included, the record will be inserted and the 
 field will set to NULL (left blank). Fields which are auto-increment do not need to be included.
+
 If *none* of the names of the fields passed to this endpoint match any of 
 the names of the PM Table's fields, then the HTTP
-status code will be `400` and the following error will be returned:
-will be returned:
+status code will be `400` and the following response will be returned:
 ```javascript
 {
    "error": {
@@ -922,8 +922,8 @@ permissions in his/her in role to use this endpoint.
 
 **URL parameters:**  
   * _string_ `pmt_uid`: The unique ID of the PM Table (which can be found 
-  in with [GET /pmtable](http://wiki.processmaker.com/3.0/REST_API_Administration#PM_Tables_List:_GET_.2Fpmtable)
-  or querying the `ADDITIONAL_TABLES.ADD_TAB_UID` field in the database.
+  with [GET /pmtable](http://wiki.processmaker.com/3.0/REST_API_Administration#PM_Tables_List:_GET_.2Fpmtable)
+  or by querying the `ADDITIONAL_TABLES.ADD_TAB_UID` field in the database).
   
 **POST parameters:**  
   * _array_ `rows`: An array of objects, where each object represents
@@ -950,10 +950,10 @@ response will be the number of inserted rows.
 
 If the name of a field is misspelled or not included, the record will be inserted and the 
 field will set to NULL (left blank). Fields which are auto-increment do not need to be included.
+
 If *none* of the names of the fields passed to this endpoint match any of 
 the names of the PM Table's fields, then the HTTP
-status code will be `400` and the following error will be returned:
-will be returned:
+status code will be `400` and the following response will be returned:
 ```javascript
 {
    "error": {
