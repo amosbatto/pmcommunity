@@ -1,13 +1,14 @@
-# Extra REST Endpoints Plugin (`extraRest-1.X.tar`)
+# Extra REST endpoints plugin 
 
 The extraRest plugin includes extra REST endpoints to be used in ProcessMaker.
 Some of these endpoints get around security restrictions in ProcessMaker's official
 endpoints. Others provide functionality not provided by the official endpoints.
 
-Author:    Amos Batto (amos@processmaker.com)  
-Version:   1.1 (2018-04-04)  
-Tested in: ProcessMaker 3.2 and 3.2.1 Community (probably will work in all 3.*X* versions)  
-License:   Public Domain  
+**Plugin:**    [extraRest-1.2.tar](extraRest-1.2.tar) (right click on link and select **Save Link As** in the context menu)
+**Author:**    Amos Batto (amos@processmaker.com)  
+**Version:**   1.2 (2018-04-17)  
+**Tested in:** ProcessMaker 3.2.1 Community in Debian 8.4 (probably will work in all 3.*X* versions)  
+**License:**   Public Domain  
 
 ## Install this plugin in ProcessMaker
   * _Right click_ on the **extraRest-1.*X*.tar** file in Github and select "Save Link As" 
@@ -36,6 +37,8 @@ For more information, untar the plugin and examine the source code in
 * [Get user's default menu: `GET extrarest/user/{usr_uid}/config`](#get-users-default-menu-get-extrarestuserusr_uidconfig)
 * [Set user's default menu: `PUT extrarest/user/{usr_uid}/config`](#set-users-default-menu-put-extrarestuserusr_uidconfig)
 * [Get user's case list: `GET extrarest/cases/user/{user_uid}?{param=option}`](#get-users-case-list-get-extrarestcasesuseruser_uidparamoption)
+* [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`]
+* [Refill a PM Table: `PUT extrarest/pmtable/{pmt_uid}/refill`]
 
 -------------------
 ### Claim case: `POST extrarest/case/{app_uid}/claim`
@@ -814,7 +817,205 @@ GET http://pm.example.com/api/1.0/workflow/extrarest/cases/user/0000000000000000
   ]
 }
 ```
+---------------------
+### Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`
 
+Append records to the end of a PM Table. The logged-in user must have the 
+[PM_SETUP](http://wiki.processmaker.com/3.1/Roles#PM_SETUP) and 
+[PM_SETUP_PM_TABLES](http://wiki.processmaker.com/3.1/Roles#PM_SETUP_PM_TABLES) 
+permissions in his/her in role to use this endpoint. 
+
+`PUT http://{domain-or-ip}/api/1.0/{workspace}/extrarest/pmtable/{pmt_uid}/append`
+
+
+**URL parameters:**  
+  * _string_ `pmt_uid`: The unique ID of the PM Table (which can be found 
+  in with [GET /pmtable](http://wiki.processmaker.com/3.0/REST_API_Administration#PM_Tables_List:_GET_.2Fpmtable)
+  or querying the `ADDITIONAL_TABLES.ADD_TAB_UID` field in the database.
+  
+**POST parameters:**  
+  * _array_ `rows`: An array of objects, where each object represents
+     a row to add to the table and its properties are the field names:  
+```
+[
+  {
+    "FIELD1": "VALUE1",
+    "FIELD2": "VALUE2",
+    ...
+  },
+  ...
+]  
+```
+
+**Note:**  
+This endpoint does *not* check whether the fields in the PM Table are not
+allowed to be NULL (left blank) nor does it check whether they are primary keys, so their
+values should be unique.
+
+**Response:**  
+If the new rows were added, then the HTTP status code will set to `200` and the
+response will be the number of inserted rows. 
+
+If the name of a field is misspelled or not included, the record will be inserted and the 
+field will set to NULL (left blank). Fields which are auto-increment do not need to be included.
+If *none* of the names of the fields passed to this endpoint match any of 
+the names of the PM Table's fields, then the HTTP
+status code will be `400` and the following error will be returned:
+will be returned:
+```javascript
+{
+   "error": {
+      "code":    400,
+      "message": "Bad Request: The value of key column is required"
+   }
+}
+```
+
+**Example:**  
+*Request:*  
+`PUT http://example.com/api/1.0/workflow/extrarest/pmtable/2714474795ad61591723eb7014657886/append`  
+```javascript
+Content-Type: application/json
+{
+  "rows": [
+    {"CLIENT_NAME": "Jane Doe", "CONTRACT_DATE": "2018-06-20", "AMOUNT": 4500.00 },
+    {"CLIENT_NAME": "Bill Row", "CONTRACT_DATE": "2017-12-31", "AMOUNT": 999.99  },
+    {"CLIENT_NAME": "Sam Slow", "CONTRACT_DATE": "2018-01-01", "AMOUNT": 27573.50}
+  ]
+}
+```
+*Response:*  
+```javascript
+200 (OK)
+3
+```
+**PHP Example:** 
+```php 
+$tableId = '2714474795ad61591723eb7014657886'; //ID for PMT_CONTRACTS
+$aVars = array(
+   'rows' => array(
+      array('CLIENT_NAME'=>'Jane May', 'CONTRACT_DATE'=>'2018-06-20', 'AMOUNT'=>4500.00),
+      array('CLIENT_NAME'=>'Bill Row', 'CONTRACT_DATE'=>'2017-12-31', 'AMOUNT'=>2699.99),
+      array('CLIENT_NAME'=>'Sam Slow', 'CONTRACT_DATE'=>'2018-01-01', 'AMOUNT'=>78.99)
+   )
+);
+
+$url = "/api/1.0/workflow/extrarest/pmtable/$tableId/append";
+$oRet = pmRestRequest("PUT", $url, $aVars, $oToken->access_token);
+
+if ($oRet->status == 200) {
+   echo $oRet->response . " records were inserted.";
+}   
+```
+
+---------------------
+### Refill a PM Table: `PUT extrarest/pmtable/{pmt_uid}/refill`
+
+Remove *all* the records in a PM Table and then refill the table with
+new data. The logged-in user must have the 
+[PM_SETUP](http://wiki.processmaker.com/3.1/Roles#PM_SETUP) and 
+[PM_SETUP_PM_TABLES](http://wiki.processmaker.com/3.1/Roles#PM_SETUP_PM_TABLES) 
+permissions in his/her in role to use this endpoint. 
+
+`PUT http://{domain-or-ip}/api/1.0/{workspace}/extrarest/pmtable/{pmt_uid}/refill`
+
+
+**URL parameters:**  
+  * _string_ `pmt_uid`: The unique ID of the PM Table (which can be found 
+  in with [GET /pmtable](http://wiki.processmaker.com/3.0/REST_API_Administration#PM_Tables_List:_GET_.2Fpmtable)
+  or querying the `ADDITIONAL_TABLES.ADD_TAB_UID` field in the database.
+  
+**POST parameters:**  
+  * _array_ `rows`: An array of objects, where each object represents
+     a row to add to the table and its properties are the field names:  
+```
+[
+  {
+    "FIELD1": "VALUE1",
+    "FIELD2": "VALUE2",
+    ...
+  },
+  ...
+]  
+```
+
+**Note:**  
+This endpoint does *not* check whether the fields in the PM Table are not
+allowed to be NULL (left blank) nor does it check whether they are primary keys, so their
+values should be unique.
+
+**Response:**  
+If the new rows were added, then the HTTP status code will set to `200` and the
+response will be the number of inserted rows. 
+
+If the name of a field is misspelled or not included, the record will be inserted and the 
+field will set to NULL (left blank). Fields which are auto-increment do not need to be included.
+If *none* of the names of the fields passed to this endpoint match any of 
+the names of the PM Table's fields, then the HTTP
+status code will be `400` and the following error will be returned:
+will be returned:
+```javascript
+{
+   "error": {
+      "code":    400,
+      "message": "Bad Request: The value of key column is required"
+   }
+}
+```
+
+**Example:**  
+*Request:*  
+`PUT http://example.com/api/1.0/workflow/extrarest/pmtable/2714474795ad61591723eb7014657886/refill`  
+```javascript
+Content-Type: application/json
+{
+  "rows": [
+    {"CLIENT_NAME": "Jane Doe", "CONTRACT_DATE": "2018-06-20", "AMOUNT": 4500.00 },
+    {"CLIENT_NAME": "Bill Row", "CONTRACT_DATE": "2017-12-31", "AMOUNT": 999.99  },
+    {"CLIENT_NAME": "Sam Slow", "CONTRACT_DATE": "2018-01-01", "AMOUNT": 27573.50}
+  ]
+}
+```
+*Response:*  
+```javascript
+200 (OK)
+3
+```
+**PHP Example:** 
+```php 
+$tableId = '2714474795ad61591723eb7014657886'; //ID for PMT_CONTRACTS
+$aVars = array(
+   'rows' => array(
+      array('CLIENT_NAME'=>'Jane May', 'CONTRACT_DATE'=>'2018-06-20', 'AMOUNT'=>4500.00),
+      array('CLIENT_NAME'=>'Bill Row', 'CONTRACT_DATE'=>'2017-12-31', 'AMOUNT'=>2699.99),
+      array('CLIENT_NAME'=>'Sam Slow', 'CONTRACT_DATE'=>'2018-01-01', 'AMOUNT'=>78.99)
+   )
+);
+
+$url = "/api/1.0/workflow/extrarest/pmtable/$tableId/refill";
+$oRet = pmRestRequest("PUT", $url, $aVars, $oToken->access_token);
+
+if ($oRet->status == 200) {
+   echo $oRet->response . " records were inserted.";
+}   
+```
+
+
+
+-----------------------
+## Version Control
+
+### Version 1.2 (2018-04-17)
+Added endpoints:
+PUT extrarest/pmtable/{pmt_uid}/append
+PUT extrarest/pmtable/{pmt_uid}/refill 
+
+Commented out the code of extrarest/sql for security reasons, but left it
+in the source code in case anyone wants to enable it for testing or adapting.
+
+### Version 1.1 (2018-04-04)
+First version posted on Github. There are several versions 1 which
+were posted on the forum, so numbered 1.1 to distinguish this version. 
 
 
    
