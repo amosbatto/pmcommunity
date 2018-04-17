@@ -38,7 +38,7 @@ For more information, untar the plugin and examine the source code in
 * [Set user's default menu: `PUT extrarest/user/{usr_uid}/config`](#set-users-default-menu-put-extrarestuserusr_uidconfig)
 * [Get user's case list: `GET extrarest/cases/user/{user_uid}?{param=option}`](#get-users-case-list-get-extrarestcasesuseruser_uidparamoption)
 * [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`](#append-rows-to-a-pm-table-put-extrarestpmtablepmt_uidappend)
-* [Refill a PM Table: `PUT extrarest/pmtable/{pmt_uid}/refill`](#refill-a-pm-table-put-extrarestpmtablepmt_uidrefill)
+* [Overwrite a PM Table: `PUT extrarest/pmtable/{pmt_uid}/overwrite`](#overwrite-a-pm-table-put-extrarestpmtablepmt_uidoverwrite)
 
 -------------------
 ### Claim case: `POST extrarest/case/{app_uid}/claim`
@@ -909,15 +909,15 @@ if ($oRet->status == 200) {
 ```
 
 ---------------------
-### Refill a PM Table: `PUT extrarest/pmtable/{pmt_uid}/refill`
+### Overwrite a PM Table: `PUT extrarest/pmtable/{pmt_uid}/overwrite`
 
-Remove *all* the records in a PM Table and then refill the table with
-new data. The logged-in user must have the 
+Remove *all* the existing records in a PM Table and then refill the table with
+new records. The logged-in user must have the 
 [PM_SETUP](http://wiki.processmaker.com/3.1/Roles#PM_SETUP) and 
 [PM_SETUP_PM_TABLES](http://wiki.processmaker.com/3.1/Roles#PM_SETUP_PM_TABLES) 
 permissions in his/her in role to use this endpoint. 
 
-`PUT http://{domain-or-ip}/api/1.0/{workspace}/extrarest/pmtable/{pmt_uid}/refill`
+`PUT http://{domain-or-ip}/api/1.0/{workspace}/extrarest/pmtable/{pmt_uid}/overwrite`
 
 
 **URL parameters:**  
@@ -965,7 +965,7 @@ status code will be `400` and the following response will be returned:
 
 **Example:**  
 *Request:*  
-`PUT http://example.com/api/1.0/workflow/extrarest/pmtable/2714474795ad61591723eb7014657886/refill`  
+`PUT http://example.com/api/1.0/workflow/extrarest/pmtable/2714474795ad61591723eb7014657886/overwrite`  
 ```javascript
 Content-Type: application/json
 {
@@ -992,7 +992,7 @@ $aVars = array(
    )
 );
 
-$url = "/api/1.0/workflow/extrarest/pmtable/$tableId/refill";
+$url = "/api/1.0/workflow/extrarest/pmtable/$tableId/overwrite";
 $oRet = pmRestRequest("PUT", $url, $aVars, $oToken->access_token);
 
 if ($oRet->status == 200) {
@@ -1008,7 +1008,7 @@ if ($oRet->status == 200) {
 ### Version 1.2 (2018-04-17)
 Added endpoints:
 PUT extrarest/pmtable/{pmt_uid}/append
-PUT extrarest/pmtable/{pmt_uid}/refill 
+PUT extrarest/pmtable/{pmt_uid}/overwrite 
 
 Commented out the code of extrarest/sql for security reasons, but left it
 in the source code in case anyone wants to enable it for testing or adapting.
