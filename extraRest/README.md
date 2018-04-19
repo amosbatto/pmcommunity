@@ -549,11 +549,11 @@ such as in the following example:
 ```
 
 **PHP example:**  
-The database is queried to find the number of open cases started by each user 
-since the beginning of the year 2018:
+The database is queried to find the number of open cases assigned to each user 
+since the beginning of the year 2018, which are overdue:
 ```php
 $url = "/api/1.0/workflow/extrarest/sql";
-$sql = "SELECT APP_CURRENT_USER AS USER, COUNT(*) AS NUM_OVERDUE 
+$sql = "SELECT APP_CURRENT_USER AS USER, COUNT(*) AS NUMBER_OVERDUE 
    FROM APP_CACHE_VIEW WHERE DATE(DEL_INIT_DATE) >= '2018-01-01' AND 
    DEL_FINISH_DATE IS NULL AND DEL_TASK_DUE_DATE < NOW() 
    GROUP BY USR_UID ORDER BY APP_CURRENT_USER";
@@ -561,7 +561,8 @@ $oRet = pmRestRequest("POST", $url, array("sql"=>$sql), $oToken->access_token);
 
 if ($oRet->status == 200) {
    foreach ($oRet->response as $aRow) {
-      print "User ".$aRow->USER." has ".$aRow->NUM_OVERDUE." cases since the start of the year 2018.\n";
+      print "User ".$aRow->USER." has ".$aRow->NUMBER_OVERDUE.
+         " cases since the start of the year 2018.\n";
    }
 }
 ```
@@ -571,11 +572,106 @@ User Wilson Jane has 8 cases since the start of the year 2018.
 User Batto Amos has 6 cases since the start of the year 2018.
 User Gomez Freddy has 1 cases since the start of the year 2018.
 ```
-*This example is only provided to show what is possible with a REST endpoint. 
+This example is only provided to show what is possible with a REST endpoint. 
 If needing to use this endpoint in production, remember to modify the source 
 code of this endpoint to only execute the specific SQL query that you need, 
 and not use it to execute any SQL query as shown in this example. Otherwise,
-you are providing a way for hackers to attack your instalation of ProcessMaker.*
+you are providing a way for hackers to attack your instalation of ProcessMaker.
+
+For example, instead of using the above endpoint, it is recommended to edit the
+source code of `workflow/engine/plugins/extraRest/src/Services/Api/ExtraRest/extra.php`
+and create the specific endpoint that is needed with its SQL query like this:
+```php
+    /**
+     * Get the number of open cases assigned to each user which are overdue in the workspace.
+     * The logged-in user needs the PM_ALLCASES permission in his/her role.
+     * 
+     * @url GET /cases/number-overdue-by-user
+     * @access protected
+     *
+     * @param string $date_from Optional. Task assigned after date in 'YYYY-MM-DD' format  {@from query}
+     * @param string $date_to   Optional. Task assigned before date in 'YYYY-MM-DD' format {@from query}
+     *   
+     * @return array
+     * 
+     * @author Amos Batto <amos@processmaker.com>
+     * @copyright Public Domain
+     */
+    public function getNumberCasesOverdueByUser($date_from=null, $date_to=null) {
+        try {
+            if ($this->userCanAccess('PM_ALLCASES') == 0) {
+                throw new \Exception("Logged-in user lacks the PM_ALLCASES permission in role.");
+            }
+            
+            $sqlLimitDate = '';
+            
+            if (!empty($date_from)) {
+               if (!preg_match(/^\d{4}-[0-2]\d-[0-3]\d$/, $date_from)) {
+                  throw new \Exception("Bad date in date_from. Use format: date_from=YYYY-MM-DD");
+               }
+               
+               $sqlLimitDate = "DATE(DEL_INIT_DATE) >= '$date_from' AND ";
+            }
+            
+            if (!empty($date_to)) {
+               if (!preg_match(/^\d{4}-[0-2]\d-[0-3]\d$/, $date_to)) {
+                  throw new \Exception("Bad date in date_to. Use format: date_to=YYYY-MM-DD");
+               }
+               
+               $sqlLimitDate .= "DATE(DEL_INIT_DATE) <= '$date_to' AND ";
+            }
+               
+            $g = new \G();
+            $g->loadClass("pmFunctions");
+            
+            $sql = "SELECT USR_UID AS USER_ID, 
+                APP_CURRENT_USER AS USER, 
+                COUNT(*) AS NUMBER_OVERDUE 
+                FROM APP_CACHE_VIEW 
+                WHERE $sqlLimitDate 
+                DEL_FINISH_DATE IS NULL AND DEL_TASK_DUE_DATE < NOW() 
+                GROUP BY USR_UID ORDER BY APP_CURRENT_USER";
+        
+            $aResult = executeQuery($sql);
+            
+            $aRows = array();
+            foreach ($aResult as $aRow) {
+                $aRows[] = $aRow;
+            }
+            return $aRows;
+        } 
+        catch (\Exception $e) {
+            throw new RestException(Api::STAT_APP_EXCEPTION, $e->getMessage());
+        }  
+	}
+```
+Notice how this endpoint allows optional dates to be specified to limit the 
+scope of the SQL query, but it uses 
+[preg_match()](http://php.net/manual/en/function.preg-match.php) to 
+check that the dates have a specific format to prevent SQL injection attacks. 
+It is a good idea to check that the input to an endpoint matches a 
+specific pattern with `preg_match()` or to pass the input through 
+[mysqli_real_escape_string()](http://php.net/manual/en/mysqli.real-escape-string.php)
+sanitize it.  
+
+After editing the plugin's source code to add a new endpoint, login to
+ProcessMaker as a user such as "admin" with the PM_SETUP_ADVANCED permission 
+in her role. Go to **Admin > Settings > Plugins > Plugins Manager** and disable
+the **extraRest** plugin. Then, reenable it so it will recreate the list
+of available endpoints stored in the `shared/sites/{workspace}/routes.php` file.
+
+Then, the custom endpoint can be executed, as shown in this example in PHP:
+```php
+$url = "/api/1.0/workflow/extrarest/cases/number-overdue-by-user?date_from=2018-01-01";
+$oRet = pmRestRequest("GET", $url, null, $oToken->access_token);
+
+if ($oRet->status == 200) {
+   foreach ($oRet->response as $aRow) {
+      print "User ".$aRow->USER." has ".$aRow->NUMBER_OVERDUE.
+         " cases since the start of the year 2018.\n";
+   }
+}
+``` 
 
 --------------------
 ### Get user's default menu: `GET extrarest/user/{usr_uid}/config`
