@@ -12,8 +12,9 @@ following JavaScript code:
 ```javascript
 $("#checkgroup-id").getInfo().options
 ```
-For example, the following checkgroup has the ID "selectServices":
-!["Select Services" checkgroup](selectServicesCheckgroup.png) ![Options in checkgroup](OptionsInCheckgroup.png)
+For example, the following checkgroup has the ID "selectServices":  
+!["Select Services" checkgroup](selectServicesCheckgroup.png)  
+![Options in checkgroup](OptionsInCheckgroup.png)
 
 
 The following code gets the list of options in the "selectServices" checkgroup:
