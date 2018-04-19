@@ -224,7 +224,7 @@ $("#selectServices").find("input[value=cleaning]").siblings("span").html('Cleani
 ### Using *checkgroup*`.setOnchange()`
 
 The [*control*.setOnchange()](http://wiki.processmaker.com/3.1/JavaScript_Functions_and_Methods#control.setOnchange)
-for checkgroups has its own idiosyncrasies. The `newValue` in the change event handler function will be an
+method for checkgroups has its own idiosyncrasies. The `newValue` in the change event handler function will be an
 array of the values of the currently selected options. However, the `oldValue` will be a JSON string holding an
 array the values of the previously selected options. In order to use that array, 
 it needs to first be decoded with 
