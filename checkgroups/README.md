@@ -13,6 +13,7 @@ following JavaScript code:
 $("#checkgroup-id").getInfo().options
 ```
 For example, the following checkgroup has the ID "selectServices":
+!["Select Services" checkgroup](selectServicesCheckgroup.png) ![Options in checkgroup](OptionsInCheckgroup.png)
 
 
 The following code gets the list of options in the "selectServices" checkgroup:
@@ -231,13 +232,14 @@ it needs to first be decoded with
 [JSON.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse).
 
 For example, a checkgroup with the ID "selectCountries" needs to limit the
-number of selected options to 3 or less. If the user has selected more than 3 options,
+number of selected options to 3 or less and prevent the "United States" from being selected. 
+If the user has selected more than 3 options or selected the value "US",  
 then, the following JavaScript returns the checkgroup to its the previous value. 
-Notice how the code decodes the `oldVal` before using it:
+Notice how `oldVal` is decoded with `JSON.parse()` before being used.
 ```javascript
 $("#selectCountries").setOnchange(function(newVal, oldVal) {
-  //three selected options is the maximum allowed:
-  if (newVal.length > 3) { 
+  //three selected options is the maximum allowed and the US isn't allowed
+  if (newVal.length > 3 || newVal.indexOf('US') != -1) { 
     previousVals = JSON.parse(oldVal);
     $("#selectCountries").setValue(previousVals);
   }
