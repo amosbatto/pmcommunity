@@ -40,6 +40,8 @@ For more information, untar the plugin and examine the source code in
 * [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`](#append-rows-to-a-pm-table-put-extrarestpmtablepmt_uidappend)
 * [Overwrite a PM Table: `PUT extrarest/pmtable/{pmt_uid}/overwrite`](#overwrite-a-pm-table-put-extrarestpmtablepmt_uidoverwrite)
 
+[Version Control](#version-control)
+
 -------------------
 ### Claim case: `POST extrarest/case/{app_uid}/claim`
 
@@ -819,6 +821,7 @@ GET http://pm.example.com/api/1.0/workflow/extrarest/cases/user/0000000000000000
 ```
 ---------------------
 ### Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`
+*Available in version 1.2 and later.*
 
 Append records to the end of a PM Table. The logged-in user must have the 
 [PM_SETUP](http://wiki.processmaker.com/3.1/Roles#PM_SETUP) and 
@@ -910,6 +913,7 @@ if ($oRet->status == 200) {
 
 ---------------------
 ### Overwrite a PM Table: `PUT extrarest/pmtable/{pmt_uid}/overwrite`
+*Available in version 1.2 and later.*
 
 Remove *all* the existing records in a PM Table and then refill the table with
 new records. The logged-in user must have the 
@@ -1000,18 +1004,18 @@ if ($oRet->status == 200) {
 }   
 ```
 
-
-
 -----------------------
 ## Version Control
 
 ### Version 1.2 (2018-04-17)
-Added endpoints:
-PUT extrarest/pmtable/{pmt_uid}/append
-PUT extrarest/pmtable/{pmt_uid}/overwrite 
+Added endpoints:  
+* [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`](#append-rows-to-a-pm-table-put-extrarestpmtablepmt_uidappend)
+* [Overwrite a PM Table: `PUT extrarest/pmtable/{pmt_uid}/overwrite`](#overwrite-a-pm-table-put-extrarestpmtablepmt_uidoverwrite)
 
-Commented out the code of extrarest/sql for security reasons, but left it
-in the source code in case anyone wants to enable it for testing or adapting.
+Commented out the code of [Execute database query: `POST extrarest/sql`](#execute-database-query-post-extrarestsql) 
+for security reasons, but left it in the source code in case anyone wants to enable it for testing or adapting.
+
+Commented out the code to use `extraRest/setup.xml` because people reported that it caused problems installing the plugin.
 
 ### Version 1.1 (2018-04-04)
 First version posted on Github. There are several versions 1 which

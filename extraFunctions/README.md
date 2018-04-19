@@ -1,15 +1,17 @@
-# Extra Functions Plugin (`extraFunctions-0.X.tar`)
+# Extra Functions Plugin
 
 The extraFunctions plugin provides useful functions that can be be used in 
 ProcessMaker triggers and plugins.
 
-Author:    Amos Batto (amos@processmaker.com)  
-Version:   0.1 (2018-04-04)  
-Tested in: ProcessMaker 3.2.1 Community (probably will work in all 3.X versions)  
-License:   Public Domain  
+**Plugin:**    [extraFunctions-1.1.tar](extraFunctions-1.1.tar) (_right click_ on link and select **Save Link As**)
+**Author:**    Amos Batto (amos@processmaker.com)  
+**Version:**   1.1 (2018-04-04)  
+**Tested in:** ProcessMaker 3.2.1 Community (probably will work in all 3.*X* versions)  
+**License:**   Public Domain  
+
 
 ## Install this plugin in ProcessMaker
-  * _Right click_ on the **extraFunctions-0.*X*.tar** file in Github and select "Save Link As" 
+  * _Right click_ on the **extraFunctions-1.*X*.tar** file in Github and select "Save Link As" 
 from the context menu to save the file to your local computer.   
   * Then, login to ProcessMaker as a user with the PM_SETUP permission in her role 
 (such as the "admin" user).  
@@ -20,7 +22,7 @@ and select the **.tar** file to upload it to ProcessMaker.
 
 ## More Information
 For more information, untar the file and examine the source code in 
-**extraFunctions/classes/class.pmFunctions.php**. 
+`extraFunctions/classes/class.pmFunctions.php`. 
 
 ## Functions
 The following functions are available in the **extraFunctions** plugin:
@@ -29,6 +31,8 @@ The following functions are available in the **extraFunctions** plugin:
 * [PMFTaskDuration()](#pmftaskduration)
 * [PMFActivityInfo()](#pmfactivityinfo)
 * [PMFNextActivities()](#pmfnextactivities)
+
+[Version Control](#version-control)
 
 -----------
 ### PMFGetUidFromUsername()
@@ -437,6 +441,19 @@ array(
   )
 )
 ```
+
+-----------------------
+## Version Control
+
+### Version 1.1 (2018-04-17)
+Same as previous version, but disabled the `extraFunctions/setup.xml` file 
+since several people reported that it caused problems when trying to install the plugin. 
+
+### Version 0.1 (2018-04-04)
+First version posted on Github. There are several versions 1 which
+were posted on the forum, so numbered 0.1 to distinguish this version.
+
+
 
 
 
