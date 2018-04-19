@@ -67,7 +67,7 @@ For example:
 ```javascript
 var aLabels = JSON.parse($("#selectServices").getText());
 ```
-Now the `aLabels` variable contains the array `["Accounting & Auditing", "Maintenance & grounds"]````.
+Now the `aLabels` variable contains the array `["Accounting & Auditing", "Maintenance & grounds"]`.
 
 For example, the following JavaScript code uses the 
 [*control*.setOnchange()](http://wiki.processmaker.com/3.1/JavaScript_Functions_and_Methods#control.setOnchange) 
@@ -91,9 +91,9 @@ hideShowAreasToClean($("#selectServices").getValue(), []);  //when DynaForm load
 ### Setting selected options
 
 The [*control*.setValue()](http://wiki.processmaker.com/3.1/JavaScript_Functions_and_Methods#control.setValue) 
-method can be used to mark checkboxes in a checkgroup. `*control*.setValue()` takes 
+method can be used to mark checkboxes in a checkgroup. [*control*.setValue()](http://wiki.processmaker.com/3.1/JavaScript_Functions_and_Methods#control.setValue) takes 
 an array of the checkbox values to mark in the checkgroup. Note that the values 
-have to be listed in the array *in the same order* as they appear in the checkgroup. 
+have to be listed in the array __*in the same order*__ as they appear in the checkgroup. 
 
 For example, the following code marks the first and third options in the "selectServices" checkgroup:
 ```javascript
@@ -103,7 +103,7 @@ If the order is reversed, and the third option is listed first in the array and 
 then the checkboxes will not be marked correctly. This code will **NOT** will not mark the 
 checkboxes, because the options are listed out of order:
 ```javascript
-$("#selectServices").setValue(["maintenance", "accounting"]);
+$("#selectServices").setValue(["maintenance", "accounting"]); //doesn't work!
 ```
 If needing set just one checkbox, but leave the other checkboxes unchanged in the checkgroup, then use 
 `$.inArray()` to first check whether the checkbox is not already marked. If unmarked, 
@@ -130,7 +130,7 @@ if ($.inArray("accounting", aVals) != -1) {
 ```
 Similarly, the following code uses `setValue()` to unmark (unselect) the "accounting" checkbox in 
 the "selectServices" checkgroup if the checkbox is not already unmarked. It uses the 
-[*array*.splice]()(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 
+[*array*.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 
 method to remove the value from the array of selected values.
 ```javascript
 var aVals = $("#selectServices").getValue();
@@ -207,10 +207,8 @@ $("#selectServices").find("input[value=accounting]").siblings("span").css("color
 ### Accessing checkboxes in a checkgroup
 
 The [*control*.getControl()](http://wiki.processmaker.com/3.1/JavaScript_Functions_and_Methods#control.getControl) 
-method will return an array of all the checkboxes in a checkgroup. 
-
-Use [.eq()](https://api.jquery.com/eq/) to access a particular checkbox in that array and 
-remember that counting in arrays starts from `0`. 
+method will return an array of all the checkboxes in a checkgroup. Use [.eq()](https://api.jquery.com/eq/) 
+to access a particular checkbox in that array and remember that counting in arrays starts from `0`. 
 
 For example, the following code sets the label of the second checkbox in the 
 "selectServices" checkgroup. It uses [.siblings()](https://api.jquery.com/siblings/) 
@@ -223,13 +221,14 @@ It is also possible to do the same thing by searching for the checkbox's value:
 $("#selectServices").find("input[value=cleaning]").siblings("span").html('Cleaning Service')
 ```
 
-### Using `*checkgroup*.setOnchange()`
+### Using *checkgroup*`.setOnchange()`
 
-The [*control*.setOnchange()[http://wiki.processmaker.com/3.1/JavaScript_Functions_and_Methods#control.setOnchange]
-for checkgroups has its own idiosyncrasies. The `newValue` in the event's handler function will be an
+The [*control*.setOnchange()](http://wiki.processmaker.com/3.1/JavaScript_Functions_and_Methods#control.setOnchange)
+for checkgroups has its own idiosyncrasies. The `newValue` in the change event handler function will be an
 array of the values of the currently selected options. However, the `oldValue` will be a JSON string holding an
 array the values of the previously selected options. In order to use that array, 
-it needs to first be decoded with [JSON.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse).
+it needs to first be decoded with 
+[JSON.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse).
 
 For example, a checkgroup with the ID "selectCountries" needs to limit the
 number of selected options to 3 or less. If the user has selected more than 3 options,
