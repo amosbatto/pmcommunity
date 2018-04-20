@@ -576,7 +576,7 @@ This example is only provided to show what is possible with a REST endpoint.
 If needing to use this endpoint in production, remember to modify the source 
 code of this endpoint to only execute the specific SQL query that you need, 
 and not use it to execute any SQL query as shown in this example. Otherwise,
-you are providing a way for hackers to attack your instalation of ProcessMaker.
+you are providing a way for hackers to attack your installation of ProcessMaker.
 
 For example, instead of using the above endpoint, it is recommended to edit the
 source code of `workflow/engine/plugins/extraRest/src/Services/Api/ExtraRest/extra.php`
@@ -643,7 +643,7 @@ and create the specific endpoint that is needed with its SQL query like this:
         catch (\Exception $e) {
             throw new RestException(Api::STAT_APP_EXCEPTION, $e->getMessage());
         }  
-	}
+   }
 ```
 Notice how this endpoint allows optional dates to be specified to limit the 
 scope of the SQL query, but it uses 
