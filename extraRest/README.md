@@ -606,7 +606,7 @@ and create the specific endpoint that is needed with its SQL query like this:
             $sqlLimitDate = '';
             
             if (!empty($date_from)) {
-               if (!preg_match(/^\d{4}-[0-2]\d-[0-3]\d$/, $date_from)) {
+               if (!preg_match('/^\d{4}-[0-2]\d-[0-3]\d$/', $date_from)) {
                   throw new \Exception("Bad date in date_from. Use format: date_from=YYYY-MM-DD");
                }
                
@@ -614,7 +614,7 @@ and create the specific endpoint that is needed with its SQL query like this:
             }
             
             if (!empty($date_to)) {
-               if (!preg_match(/^\d{4}-[0-2]\d-[0-3]\d$/, $date_to)) {
+               if (!preg_match('/^\d{4}-[0-2]\d-[0-3]\d$/', $date_to)) {
                   throw new \Exception("Bad date in date_to. Use format: date_to=YYYY-MM-DD");
                }
                
