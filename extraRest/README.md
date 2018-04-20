@@ -519,7 +519,7 @@ which by default is named "wf_workflow".
 be enabled if removing the `/* ... */` around the code. If needing to executing SQL 
 queries, it is recommended to adapt the code for your specific purpose and 
 include the specific query in the code of the endpoint and only pass the
-parameters that need to be changed to endpoint. If this endpoint is allowed to 
+parameters that need to be changed to the endpoint. If this endpoint is allowed to 
 execute any SQL query, a hacker could use it to steal all the information from the
 ProcessMaker database. 
 
