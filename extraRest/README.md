@@ -39,8 +39,8 @@ For more information, untar the plugin and examine the source code in
 * [Get user's case list: `GET extrarest/cases/user/{user_uid}?{param=option}`](#get-users-case-list-get-extrarestcasesuseruser_uidparamoption)
 * [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`](#append-rows-to-a-pm-table-put-extrarestpmtablepmt_uidappend)
 * [Overwrite a PM Table: `PUT extrarest/pmtable/{pmt_uid}/overwrite`](#overwrite-a-pm-table-put-extrarestpmtablepmt_uidoverwrite)
-* [Get document folders: `PUT extrarest/documents/{fdr_uid}/folders`](#)
-* [Get documents in folder: `PUT extrarest/documents/{fdr_uid}/contents`](#)
+* [Get document folders: `PUT extrarest/documents/{fdr_uid}/folders`](#get-document-folders-put-extrarestdocumentsfdr_uidfolders)
+* [Get documents in folder: `PUT extrarest/documents/{fdr_uid}/contents`](#get-documents-in-folder-put-extrarestdocumentsfdr_uidcontents)
 
 [Version Control](#version-control)
 
@@ -1112,6 +1112,7 @@ The logged-in user must have the [PM_FOLDERS_VIEW](http://wiki.processmaker.com/
 permission in his/her role.
 
 `GET http://{domain-or-ip}/api/1.0/{workspace}/extrarest/documents/{fdr_uid}/folders`
+
 `GET http://{domain-or-ip}/api/1.0/{workspace}/extrarest/documents/{fdr_uid}/folders?limit={int}&start={int}&direction={dir}&sort={field}&search={str}`
 
 **URL parameters:**  
@@ -1178,6 +1179,7 @@ The logged-in user must have the [PM_FOLDERS_VIEW](http://wiki.processmaker.com/
 permission in his/her role.
 
 `GET http://{domain-or-ip}/api/1.0/{workspace}/extrarest/documents/{fdr_uid}/contents`
+
 `GET http://{domain-or-ip}/api/1.0/{workspace}/extrarest/documents/{fdr_uid}/contents?keyword={str}&search_type={type}&limit={int}&start={int}&user={uid}&only_active={boolean}&direction={dir}&sort={field}&search={str}`
 
 **URL parameters:**  
@@ -1347,8 +1349,8 @@ permission in his/her role.
 
 ### Version 1.3 (2018-04-23)
 Added endpoints:  
-* [Get document folders: `PUT extrarest/documents/{fdr_uid}/folders`](#)
-* [Get documents in folder: `PUT extrarest/documents/{fdr_uid}/contents`](#)
+* [Get document folders: `PUT extrarest/documents/{fdr_uid}/folders`](#get-document-folders-put-extrarestdocumentsfdr_uidfolders)
+* [Get documents in folder: `PUT extrarest/documents/{fdr_uid}/contents`](#get-documents-in-folder-put-extrarestdocumentsfdr_uidcontents)
 
 ### Version 1.2 (2018-04-17)
 Added endpoints:  
