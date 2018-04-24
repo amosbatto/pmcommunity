@@ -4,9 +4,9 @@ The extraRest plugin includes extra REST endpoints to be used in ProcessMaker.
 Some of these endpoints get around security restrictions in ProcessMaker's official
 endpoints. Others provide functionality not provided by the official endpoints.
 
-**Plugin:**    [extraRest-1.2.tar](extraRest-1.2.tar) (*right click* on link and select **Save Link As** in the context menu)  
+**Plugin:**    [extraRest-1.3.tar](extraRest-1.3.tar) (*right click* on link and select **Save Link As** in the context menu)  
 **Author:**    Amos Batto (amos@processmaker.com)  
-**Version:**   1.2 (2018-04-17)  
+**Version:**   1.3 (2018-04-23) 
 **Tested in:** ProcessMaker 3.2.1 Community in Debian 8.4 (probably will work in all 3.*X* versions)  
 **License:**   Public Domain  
 
