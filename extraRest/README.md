@@ -39,8 +39,8 @@ For more information, untar the plugin and examine the source code in
 * [Get user's case list: `GET extrarest/cases/user/{user_uid}?{param=option}`](#get-users-case-list-get-extrarestcasesuseruser_uidparamoption)
 * [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`](#append-rows-to-a-pm-table-put-extrarestpmtablepmt_uidappend)
 * [Overwrite a PM Table: `PUT extrarest/pmtable/{pmt_uid}/overwrite`](#overwrite-a-pm-table-put-extrarestpmtablepmt_uidoverwrite)
-* [Get document folders: `PUT extrarest/documents/{fdr_uid}/folders`](#get-document-folders-put-extrarestdocumentsfdr_uidfolders)
-* [Get documents in folder: `PUT extrarest/documents/{fdr_uid}/contents`](#get-documents-in-folder-put-extrarestdocumentsfdr_uidcontents)
+* [Get document folders: `GET extrarest/documents/{fdr_uid}/folders`](#get-document-folders-get-extrarestdocumentsfdr_uidfolders)
+* [Get documents in folder: `GET extrarest/documents/{fdr_uid}/contents`](#get-documents-in-folder-get-extrarestdocumentsfdr_uidcontents)
 
 [Version Control](#version-control)
 
@@ -1103,7 +1103,7 @@ if ($oRet->status == 200) {
 ```
 
 ---------------------
-### Get document folders: `PUT extrarest/documents/{fdr_uid}/folders`
+### Get document folders: `GET extrarest/documents/{fdr_uid}/folders`
 *Available in version 1.3 and later.*
 
 Retrieve a list of subfolders found in a specified parent folder. These are the 
@@ -1171,7 +1171,7 @@ permission in his/her role.
 ```
 
 ---------------------
-### Get documents in folder: `PUT extrarest/documents/{fdr_uid}/contents`
+### Get documents in folder: `GET extrarest/documents/{fdr_uid}/contents`
 *Available in version 1.3 and later.*
 
 Retrieve the documents in a specified folder. 
@@ -1349,8 +1349,8 @@ permission in his/her role.
 
 ### Version 1.3 (2018-04-23)
 Added endpoints:  
-* [Get document folders: `PUT extrarest/documents/{fdr_uid}/folders`](#get-document-folders-put-extrarestdocumentsfdr_uidfolders)
-* [Get documents in folder: `PUT extrarest/documents/{fdr_uid}/contents`](#get-documents-in-folder-put-extrarestdocumentsfdr_uidcontents)
+* [Get document folders: `GET extrarest/documents/{fdr_uid}/folders`](#get-document-folders-get-extrarestdocumentsfdr_uidfolders)
+* [Get documents in folder: `GET extrarest/documents/{fdr_uid}/contents`](#get-documents-in-folder-get-extrarestdocumentsfdr_uidcontents)
 
 ### Version 1.2 (2018-04-17)
 Added endpoints:  
