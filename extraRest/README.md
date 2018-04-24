@@ -39,6 +39,8 @@ For more information, untar the plugin and examine the source code in
 * [Get user's case list: `GET extrarest/cases/user/{user_uid}?{param=option}`](#get-users-case-list-get-extrarestcasesuseruser_uidparamoption)
 * [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`](#append-rows-to-a-pm-table-put-extrarestpmtablepmt_uidappend)
 * [Overwrite a PM Table: `PUT extrarest/pmtable/{pmt_uid}/overwrite`](#overwrite-a-pm-table-put-extrarestpmtablepmt_uidoverwrite)
+* [Get document folders: `PUT extrarest/documents/{fdr_uid}/folders`](#)
+* [Get documents in folder: `PUT extrarest/documents/{fdr_uid}/contents`](#)
 
 [Version Control](#version-control)
 
@@ -1100,8 +1102,253 @@ if ($oRet->status == 200) {
 }   
 ```
 
+---------------------
+### Get document folders: `PUT extrarest/documents/{fdr_uid}/folders`
+*Available in version 1.3 and later.*
+
+Retrieve a list of subfolders found in a specified parent folder. These are the 
+folders displayed by going to **Home > Documents** in the ProcessMaker interface. 
+The logged-in user must have the [PM_FOLDERS_VIEW](http://wiki.processmaker.com/3.1/Roles#PM_FOLDERS_VIEW) 
+permission in his/her role.
+
+`GET http://{domain-or-ip}/api/1.0/{workspace}/extrarest/documents/{fdr_uid}/folders`
+`GET http://{domain-or-ip}/api/1.0/{workspace}/extrarest/documents/{fdr_uid}/folders?limit={int}&start={int}&direction={dir}&sort={field}&search={str}`
+
+**URL parameters:**  
+  * _string_ `fdr_uid`: The unique ID of the folder or `root` if the base folder "/".
+  
+**Optional query string parameters:**  
+  * `limit={int}`: The maximum number of folders to return. If set to `0`, 
+    which is the default, then an unlimited number of folders will be returned.  
+  * `start={int}`: The number where to start listing folders. If set to `0`, 
+    which is the default, then will start from the first folder. This parameter
+    is often used in conjunction with `limit={int}` when only displaying a
+    fixed number of folders at a time.
+  * `direction={dir}`: The sort direction which can be `ASC` (ascending which is 
+    the default) or `DESC` (descending).
+  * `sort={field}`: The field used to sort the folders, which can be `appDocCreateDate`
+    (the date the folder was first created), `name` (the folder name) or "``" (no sort order).
+  * `search={str}`: A case insensitive string to search for in the folder names. 
+    Make sure to use a function such as PHP's url_encode() or JavaScript's 
+    encodeURIComponent() so `" "` (space) becomes `%20` and `"é"` becomes `%C3%A9`.
+    
+**Response:**  
+* An object holding the following two properties:
+    * `folders`: An array of folder objects. Each folder object has the following properties:
+        * `FOLDER_UID`:         The unique ID of the folder.
+        * `FOLDER_PARENT_UID`:  The unique ID of the parent folder or `"\/"` if the parent is the root folder.
+        * `FOLDER_NAME`:        The folder's name.
+        * `FOLDER_CREATE_DATE`: The datetime when the folder was created in `"YYYY-MM-DD HH:MM:SS"` format.
+        * `FOLDER_UPDATE_DATE`: The datetime when the folder was last updated in `"YYYY-MM-DD HH:MM:SS"` format.
+    * `totalFoldersCount`:      The total number of subfolders.
+
+**Example:**  
+*Request:*  
+`GET http://example.com/api/1.0/workflow/extrarest/documents/root/folders`
+
+*Response:*
+```javascript
+{
+   "folders": [
+      {
+         "FOLDER_UID":         "6268552735ade43f898a294019015502",
+         "FOLDER_PARENT_UID":  "\/",
+         "FOLDER_NAME":        "invoices",
+         "FOLDER_CREATE_DATE": "2018-04-23 16:37:12",
+         "FOLDER_UPDATE_DATE": "2018-04-23 16:37:12"
+      },
+      {
+         "FOLDER_UID":         "5250317125ade44071e56e2014209371",
+         "FOLDER_PARENT_UID":  "\/",
+         "FOLDER_NAME":        "reports",
+         "FOLDER_CREATE_DATE": "2018-04-23 16:37:27",
+         "FOLDER_UPDATE_DATE": "2018-04-23 16:37:27"
+      }
+   ],
+   "totalFoldersCount":        2
+}
+```
+
+---------------------
+### Get documents in folder: `PUT extrarest/documents/{fdr_uid}/contents`
+*Available in version 1.3 and later.*
+
+Retrieve the documents in a specified folder. 
+The logged-in user must have the [PM_FOLDERS_VIEW](http://wiki.processmaker.com/3.1/Roles#PM_FOLDERS_VIEW) 
+permission in his/her role.
+
+`GET http://{domain-or-ip}/api/1.0/{workspace}/extrarest/documents/{fdr_uid}/contents`
+`GET http://{domain-or-ip}/api/1.0/{workspace}/extrarest/documents/{fdr_uid}/contents?keyword={str}&search_type={type}&limit={int}&start={int}&user={uid}&only_active={boolean}&direction={dir}&sort={field}&search={str}`
+
+**URL parameters:**  
+  * _string_ `fdr_uid`: The unique ID of the folder or `root` if the base folder "/".
+  
+**Optional query string parameters:**  
+  * `keyword={str}` Only return files which have the specified keyword in 
+    the filename or in the document's tag if `search_type=TAG`.
+  * `search_type={type}`: The type of search, which can be `TAG` or `ALL`.
+  * `limit={int}`: The maximum number of folders to return. If set to `0`, 
+    which is the default, then an unlimited number of folders will be returned.  
+  * `start={int}`: The number where to start listing folders. If set to `0`, 
+    which is the default, then will start from the first folder. This parameter
+    is often used in conjunction with `limit={int}` when only displaying a
+    fixed number of folders at a time.
+  * `user={uid}`: Only return files that can be accessed by the specified user, 
+    indicated by his/her unique ID. This parameter can only be specified 
+    if the logged-in user has the PM_ALLCASES permission in his/her role. 
+  * `only_active={boolean}`: Set to `true` if only active files (not deleted and 
+    not overwritten with new versions) will be returned. Default is `false` so all files 
+    will be returned.
+  * `direction={dir}`: The sort direction which can be `ASC` (ascending which is 
+    the default) or `DESC` (descending).
+  * `sort={field}`: The field used to sort the folders, which can be `appDocCreateDate`
+    (the date the folder was first created), `name` (the folder name) or "``" (no sort order).
+  * `search={str}`: A case insensitive string to search for in the folder names. 
+    Make sure to use a function such as PHP's url_encode() or JavaScript's 
+    encodeURIComponent() so `" "` (space) becomes `%20` and `"é"` becomes `%C3%A9`.
+    
+**Response:**  
+* An object holding the following two properties:
+    * `documents`: An array of document objects. 
+    * `totalDocumentsCount`: The total number of documents in the directory.
+
+**Example:**  
+*Request:*  
+`GET http://example.com/api/1.0/workflow/extrarest/documents/root/contents`
+
+*Response:*
+```javascript
+{
+   "documents": [
+      {
+         "APP_DOC_UID": "4674916455a9611cfa0e8e6010566295",
+         "APP_DOC_FILENAME": "invoice_Acme_Inc",
+         "APP_DOC_COMMENT": null,
+         "DOC_VERSION": 2,
+         "APP_UID": "4731930415a9611cb69fca4029962239",
+         "DEL_INDEX": 1,
+         "DOC_UID": "6146400035a8f9fd86551f3042633729",
+         "USR_UID": "00000000000000000000000000000001",
+         "APP_DOC_TYPE": "OUTPUT",
+         "APP_DOC_CREATE_DATE": "2018-02-27 21:21:15",
+         "APP_DOC_INDEX": 2,
+         "FOLDER_UID": "",
+         "APP_DOC_PLUGIN": "",
+         "APP_DOC_TAGS": "",
+         "APP_DOC_STATUS": "ACTIVE",
+         "APP_DOC_STATUS_DATE": null,
+         "APP_DOC_FIELDNAME": null,
+         "APP_DOC_DRIVE_DOWNLOAD": null,
+         "SYNC_WITH_DRIVE": "UNSYNCHRONIZED",
+         "SYNC_PERMISSIONS": null,
+         "APP_TITLE": "#279",
+         "APP_DESCRIPTION": "",
+         "APP_NUMBER": 279,
+         "APP_PARENT": "",
+         "APP_STATUS": "DRAFT",
+         "PRO_UID": "4942606665a8f9f9f2860f0087218330",
+         "APP_PROC_CODE": "",
+         "STATUS": "Draft",
+         "CREATOR": "Administrator admin",
+         "CREATE_DATE": "2018-02-27 21:19:55",
+         "UPDATE_DATE": "2018-02-27 21:21:19",
+         "PRO_TITLE": "Purchase Request",
+         "OUT_DOC_UID": "6146400035a8f9fd86551f3042633729",
+         "OUT_DOC_TITLE": "Invoice for client",
+         "OUT_DOC_DESCRIPTION": "",
+         "OUT_DOC_FILENAME": "invoice_@#client",
+         "OUT_DOC_REPORT_GENERATOR": "HTML2PDF",
+         "OUT_DOC_LANDSCAPE": 0,
+         "OUT_DOC_MEDIA": "Letter",
+         "OUT_DOC_GENERATE": "BOTH",
+         "OUT_DOC_TYPE": "HTML",
+         "OUT_DOC_CURRENT_REVISION": null,
+         "OUT_DOC_FIELD_MAPPING": null,
+         "OUT_DOC_VERSIONING": 1,
+         "OUT_DOC_DESTINATION_PATH": "",
+         "OUT_DOC_TAGS": "",
+         "OUT_DOC_PDF_SECURITY_ENABLED": 0,
+         "OUT_DOC_PDF_SECURITY_OPEN_PASSWORD": "",
+         "OUT_DOC_PDF_SECURITY_OWNER_PASSWORD": "",
+         "OUT_DOC_PDF_SECURITY_PERMISSIONS": "",
+         "OUT_DOC_OPEN_TYPE": 1,
+         "USR_USERNAME": "johndoe",
+         "USR_FIRSTNAME": "John",
+         "USR_LASTNAME": "Doe",
+         "DELETE_LABEL": "Delete",
+         "DOWNLOAD_LABEL": ".pdf",
+         "DOWNLOAD_LINK": "..\/cases\/cases_ShowOutputDocument?a=4674916455a9611cfa0e8e6010566295&v=2&ext=pdf&random=98480022",
+         "DOWNLOAD_LABEL1": ".doc",
+         "DOWNLOAD_LINK1": "..\/cases\/cases_ShowOutputDocument?a=4674916455a9611cfa0e8e6010566295&v=2&ext=doc&random=2117881970",
+         "APP_DOC_UID_VERSION": "4674916455a9611cfa0e8e6010566295_2"
+      },
+      {
+         "APP_DOC_UID": "6339878345a8664d1553481052427126",
+         "APP_DOC_FILENAME": "labor_contract_mary_williams.doc",
+         "APP_DOC_COMMENT": "final draft of contract",
+         "DOC_VERSION": 1,
+         "APP_UID": "6450207755a8664b146d762079795117",
+         "DEL_INDEX": 1,
+         "DOC_UID": "3361325995a866456c2e8c3050631873",
+         "USR_UID": "00000000000000000000000000000001",
+         "APP_DOC_TYPE": "INPUT",
+         "APP_DOC_CREATE_DATE": "2018-02-15 23:57:53",
+         "APP_DOC_INDEX": 1,
+         "FOLDER_UID": "",
+         "APP_DOC_PLUGIN": "",
+         "APP_DOC_TAGS": "INPUT",
+         "APP_DOC_STATUS": "ACTIVE",
+         "APP_DOC_STATUS_DATE": null,
+         "APP_DOC_FIELDNAME": "contractFile",
+         "APP_DOC_DRIVE_DOWNLOAD": null,
+         "SYNC_WITH_DRIVE": "UNSYNCHRONIZED",
+         "SYNC_PERMISSIONS": null,
+         "APP_TITLE": "#269",
+         "APP_DESCRIPTION": "",
+         "APP_NUMBER": 269,
+         "APP_PARENT": "",
+         "APP_STATUS": "DRAFT",
+         "PRO_UID": "1953128925a864f18e70955009266756",
+         "APP_PROC_CODE": "",
+         "STATUS": "Draft",
+         "CREATOR": "Baker Sally",
+         "CREATE_DATE": "2018-02-15 23:57:21",
+         "UPDATE_DATE": "2018-02-16 00:13:49",
+         "PRO_TITLE": "Onboard New Employee",
+         "INP_DOC_UID": "3361325995a866456c2e8c3050631873",
+         "INP_DOC_TITLE": "Contract File",
+         "INP_DOC_DESCRIPTION": "",
+         "INP_DOC_FORM_NEEDED": "VIRTUAL",
+         "INP_DOC_ORIGINAL": "ORIGINAL",
+         "INP_DOC_PUBLISHED": "PRIVATE",
+         "INP_DOC_VERSIONING": 0,
+         "INP_DOC_DESTINATION_PATH": "",
+         "INP_DOC_TAGS": "INPUT",
+         "INP_DOC_TYPE_FILE": ".*",
+         "INP_DOC_MAX_FILESIZE": 0,
+         "INP_DOC_MAX_FILESIZE_UNIT": "KB",
+         "USR_USERNAME": "sallybaker",
+         "USR_FIRSTNAME": "Sally",
+         "USR_LASTNAME": "Baker",
+         "DELETE_LABEL": "Delete",
+         "DOWNLOAD_LABEL": "Download",
+         "DOWNLOAD_LINK": "..\/cases\/cases_ShowDocument?a=6339878345a8664d1553481052427126&v=1",
+         "DOWNLOAD_LABEL1": "",
+         "DOWNLOAD_LINK1": "",
+         "APP_DOC_UID_VERSION": "6339878345a8664d1553481052427126_1"
+      },
+   ],
+   "totalDocumentsCount": 38
+}
+```
+
 -----------------------
 ## Version Control
+
+### Version 1.3 (2018-04-23)
+Added endpoints:  
+* [Get document folders: `PUT extrarest/documents/{fdr_uid}/folders`](#)
+* [Get documents in folder: `PUT extrarest/documents/{fdr_uid}/contents`](#)
 
 ### Version 1.2 (2018-04-17)
 Added endpoints:  
