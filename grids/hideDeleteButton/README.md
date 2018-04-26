@@ -6,7 +6,7 @@ whether a value has changed in a particular grid row by looking at the field nam
 in the [form.setOnchange()](http://wiki.processmaker.com/3.0/JavaScript_Functions_and_Methods#form.setOnchange) 
 event handler function.
 
-**DynaForm:**  [Hide Delete Button in Grid.json](Hide Delete Button in Grid.json) (*right click* on link and select **Save Link As** in the context menu)  
+**DynaForm:**  [Hide Delete Button in Grid.json](Hide%20Delete%20Button%20in%20Grid.json) (*right click* on link and select **Save Link As** in the context menu)  
 **Author:**    Amos Batto (amos@processmaker.com)  
 **Version:**   1.0 (2018-04-26)  
 **Tested in:** ProcessMaker 3.2.1 Community in Debian 8.4 (probably will work in all 3.*X* versions)  

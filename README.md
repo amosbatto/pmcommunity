@@ -29,6 +29,9 @@ All code is Public Domain and can be used without any restrictions.
     
 * Web Entry
     * [Link to files uploaded in Web Entry](webEntry): Trigger code to create URLs to Web Entry files.
+    
+* Grids
+    * [grids](grids/HideDeleteButton): JavaScript code to hide "Delete" buttons in a grid based on changing values in each row
 
 
 
