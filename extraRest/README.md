@@ -6,7 +6,7 @@ endpoints. Others provide functionality not provided by the official endpoints.
 
 **Plugin:**    [extraRest-1.3.tar](http://www.illa-a.org/pmcommunity/extraRest/extraRest-1.3.tar) (*right click* on link and select **Save Link As** in the context menu)  
 **Author:**    Amos Batto (amos@processmaker.com)  
-**Version:**   1.3 (2018-04-23) 
+**Version:**   1.3 (2018-04-23)  
 **Tested in:** ProcessMaker 3.2.1 Community in Debian 8.4 (probably will work in all 3.*X* versions)  
 **License:**   Public Domain  
 
