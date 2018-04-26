@@ -3,7 +3,7 @@
 The extraFunctions plugin provides useful functions that can be be used in 
 ProcessMaker triggers and plugins.
 
-**Plugin:**    [extraFunctions-1.1.tar](extraFunctions-1.1.tar) (_right click_ on link and select **Save Link As**)
+**Plugin:**    [extraFunctions-1.1.tar](extraFunctions-1.1.tar) (_right click_ on link and select **Save Link As**)  
 **Author:**    Amos Batto (amos@processmaker.com)  
 **Version:**   1.1 (2018-04-04)  
 **Tested in:** ProcessMaker 3.2.1 Community (probably will work in all 3.*X* versions)  
@@ -26,7 +26,7 @@ For more information, untar the file and examine the source code in
 
 ## Functions
 The following functions are available in the **extraFunctions** plugin:
-* [PMFGetUidFromUsername()](#pmfnextactivities)
+* [PMFGetUidFromUsername()](#pmfgetuidfromusername)
 * [PMFCalculateDate()](#pmfcalculatedate)
 * [PMFTaskDuration()](#pmftaskduration)
 * [PMFActivityInfo()](#pmfactivityinfo)
