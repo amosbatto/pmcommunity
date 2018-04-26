@@ -4,7 +4,7 @@ The extraRest plugin includes extra REST endpoints to be used in ProcessMaker.
 Some of these endpoints get around security restrictions in ProcessMaker's official
 endpoints. Others provide functionality not provided by the official endpoints.
 
-**Plugin:**    [extraRest-1.3.tar](extraRest-1.3.tar) (*right click* on link and select **Save Link As** in the context menu)  
+**Plugin:**    [extraRest-1.3.tar](http://www.illa-a.org/pmcommunity/extraRest/extraRest-1.3.tar) (*right click* on link and select **Save Link As** in the context menu)  
 **Author:**    Amos Batto (amos@processmaker.com)  
 **Version:**   1.3 (2018-04-23) 
 **Tested in:** ProcessMaker 3.2.1 Community in Debian 8.4 (probably will work in all 3.*X* versions)  
@@ -1347,12 +1347,14 @@ permission in his/her role.
 -----------------------
 ## Version Control
 
-### Version 1.3 (2018-04-23)
+### Version 1.3 (2018-04-23)  
+File: [extraRest-1.3.tar](http://www.illa-a.org/pmcommunity/extraRest/extraRest-1.3.tar)  
 Added endpoints:  
 * [Get document folders: `GET extrarest/documents/{fdr_uid}/folders`](#get-document-folders-get-extrarestdocumentsfdr_uidfolders)
 * [Get documents in folder: `GET extrarest/documents/{fdr_uid}/contents`](#get-documents-in-folder-get-extrarestdocumentsfdr_uidcontents)
 
-### Version 1.2 (2018-04-17)
+### Version 1.2 (2018-04-17)  
+File: [extraRest-1.2.tar](http://www.illa-a.org/pmcommunity/extraRest/extraRest-1.2.tar)  
 Added endpoints:  
 * [Append rows to a PM Table: `PUT extrarest/pmtable/{pmt_uid}/append`](#append-rows-to-a-pm-table-put-extrarestpmtablepmt_uidappend)
 * [Overwrite a PM Table: `PUT extrarest/pmtable/{pmt_uid}/overwrite`](#overwrite-a-pm-table-put-extrarestpmtablepmt_uidoverwrite)
@@ -1362,7 +1364,8 @@ for security reasons, but left it in the source code in case anyone wants to ena
 
 Commented out the code to use `extraRest/setup.xml` because people reported that it caused problems installing the plugin.
 
-### Version 1.1 (2018-04-04)
+### Version 1.1 (2018-04-04)  
+File: [extraRest-1.1.tar](http://www.illa-a.org/pmcommunity/extraRest/extraRest-1.1.tar)  
 First version posted on Github. There are several versions 1 which
 were posted on the forum, so numbered 1.1 to distinguish this version. 
 

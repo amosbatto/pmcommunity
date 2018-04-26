@@ -3,9 +3,9 @@
 The extraFunctions plugin provides useful functions that can be be used in 
 ProcessMaker triggers and plugins.
 
-**Plugin:**    [extraFunctions-1.1.tar](extraFunctions-1.1.tar) (_right click_ on link and select **Save Link As**)  
+**Plugin:**    [extraFunctions-1.2.tar](http://www.illa-a.org/pmcommunity/extraFunctions/extraFunctions-1.2.tar) (_right click_ on link and select **Save Link As**)  
 **Author:**    Amos Batto (amos@processmaker.com)  
-**Version:**   1.1 (2018-04-04)  
+**Version:**   1.2 (2018-04-26)  
 **Tested in:** ProcessMaker 3.2.1 Community (probably will work in all 3.*X* versions)  
 **License:**   Public Domain  
 
@@ -442,10 +442,115 @@ array(
 )
 ```
 
+### PMFExecuteTrigger()
+*available in version 1.2 and later*
+
+`PMFExecuteTrigger()` executes a trigger in a specified case and task and by a specified user. 
+```
+int PMFExecuteTrigger($triggerId, $caseId='', $delIndex='', $userId='')
+```
+
+**Parameters:**  
+  * _string_ `$triggerId`: The unique ID or title of the trigger to executed. Note that the trigger title is case sensitive. 
+  * _string_ `$taskId`: *Optional.* Unique ID of the task where the trigger will be executed. Default is the current task.
+  * _string_ `$caseId`: *Optional.* Unique ID of the case where the trigger will be executed. Default is the current case.
+  * _string_ `$userId`: *Optional.* Unique ID of user to execute the trigger. Default is the current logged user.
+
+**Return Value:**  
+Returns `1` if successful or `0` if an error or sets an error message in the `@@__ERROR__` system variable if there is an exception.
+
+**Example:**  
+Execute another trigger named "Calculate Overtime Pay":
+```php
+$triggerId = PMFGetUidFromText('Calculate Overtime Pay', 'TRI_TITLE')[0];
+PMFExecuteTrigger($triggerId);
+```
+
+### PMFCaseCounters()
+*available in version 1.2 and later*
+
+`PMFCaseCounters()` gets the case counters for a user, meaning the number of To Do, Draft, 
+Paused, Cancelled, Participated, Unassigned and Process Supervisor's Review 
+cases for that user.
+
+If getting the case counters for another user, then the logged-in user needs to
+have the PM_ALLCASES permission in his/her role. 
+ 
+```
+array PMFCaseCounters($userUid='')
+```
+
+**Parameters:**  
+  * _string_ `$userUid`: *Optional.* Unique ID of a user. If not included, then will return the case counters for the current logged-in user.
+
+**Return Value:**  
+Returns an associative array with the number of cases for the following categories:  
+```php
+array(
+   'to_do'      => X, 
+   'draft'      => X, 
+   'cancelled'  => X, 
+   'sent'       => X, //number of Participated cases
+   'paused'     => X, 
+   'completed'  => X, 
+   'selfservice'=> X, //number of Unassigned cases (for tasks with 
+                      //Self Service o Self Service Value Based Assignment)
+   'to_revise'  =  X, //number of Process Supervisor > Review cases
+)
+```
+
+**Example:**  
+Get the number of To Do and Draft cases for the next assigned user in the case. If over 10, 
+then reassign the case the user's manager, because the user is overworked.
+```php
+SELECT * FROM 
+$triggerId = PMFGetUidFromText('Calculate Overtime Pay', 'TRI_TITLE')[0];
+PMFExecuteTrigger($triggerId);
+```
+$nextTaskId = PMFGetUidFromText('Review Cost Estimates', 'TAS_TITLE')[0];
+$caseId = @@APPLICATION;
+$currentIndex = @@INDEX;
+
+//SQL query to lookup the next task in the process. 
+$sql = "SELECT * FROM APP_CACHE_VIEW WHERE APP_UID='$caseId' AND 
+   DEL_LAST_INDEX='$currentIndex' AND TAS_UID='$nextTaskId'";
+$aTasks = executeQuery($sql);
+
+if (empty($aTasks)) {
+   throw new Exception("Unable to find tasks with query: $sql");
+}
+
+$nextUserId = $aTasks[1]['USR_UID'];
+$aCounters = PMFCaseCounters($nextUserId);
+$casesToDo = $aCounters['to_do'] + $aCounters['draft'];
+
+if ($casesToDo > 10) {
+   //lookup next assigned user's supervisor:
+   $aUserInfo = userinfo($nextUserId);
+   if (!empty($aUserInfo['reportsto'])) {
+      $oCase = new Cases();
+      $g = new G();
+      g->sessionVarSave();
+      $oCase->reassignCase($caseId, $aTasks[1]['DEL_INDEX'], $nextUserId, $aUserInfo['reportsto']);
+      $g->sessionVarRestore();
+   }
+}
+```   
+This trigger needs to be executed *after routing*, because at that point the record for the next task has already been
+written to the APP_CACHE_VIEW table in the database. Also, the logged-in user's supervisor needs to be in the assignment list
+for the next task or in its *ad hoc* assignment list.
+
 -----------------------
 ## Version Control
 
+### Version 1.2 (2018-04-26)
+File: [extraFunctions-1.2.tar](http://www.illa-a.org/pmcommunity/extraFunctions/extraFunctions-1.2.tar)  
+* Added headers to functions so that they can be used in the ProcessMaker trigger wizard.
+* Added PMFExecuteTrigger()
+* Added PMFCaseCounters()
+
 ### Version 1.1 (2018-04-17)
+File: [extraFunctions-1.1.tar](http://www.illa-a.org/pmcommunity/extraFunctions/extraFunctions-1.1.tar)  
 Same as previous version, but disabled the `extraFunctions/setup.xml` file 
 since several people reported that it caused problems when trying to install the plugin. 
 
