@@ -31,7 +31,7 @@ All code is Public Domain and can be used without any restrictions.
     * [Link to files uploaded in Web Entry](webEntry): Trigger code to create URLs to Web Entry files.
     
 * Grids
-    * [Hide Delete Buttons](grids/hideDeleteButton): JavaScript code to hide "Delete" buttons in a grid based on changing values in each row
+    * [Hide Delete Buttons](grids/hideDeleteButton): JavaScript code to hide the "Delete" buttons in a grid based on changing values in each row
 
 
 
